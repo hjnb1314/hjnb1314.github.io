@@ -54,7 +54,7 @@ disable_top_img: false
 index_img: https://img2.baidu.com/it/u=1001356277,2516926669&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500
 
 # If the banner of page not setting, it will show the top_img
-default_top_img:
+default_top_img: https://img2.baidu.com/it/u=1001356277,2516926669&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500
 
 # The banner image of archive page
 archive_img: https://img0.baidu.com/it/u=1993001535,3340762436&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800
@@ -149,6 +149,7 @@ copy:
 toc:
   post: true
   page: false
+  +++++++++++++++++++++++++++++++
   number: true
   expand: false
   style_simple: false # for post
