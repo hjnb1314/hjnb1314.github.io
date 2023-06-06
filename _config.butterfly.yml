@@ -44,7 +44,7 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: "./img//workspaces/hjnb1314.github.io/source/img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png"
+  img: "./img/workspaces/hjnb1314.github.io/source/img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png"
   effect: true
 
 # Disable all banner image
