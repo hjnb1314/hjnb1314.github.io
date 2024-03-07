@@ -51,10 +51,10 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://img1.baidu.com/it/u=2843913822,2128122710&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500
+index_img: https://jsd.012700.xyz/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://img1.baidu.com/it/u=2843913822,2128122710&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500
+default_top_img: https://jsd.012700.xyz/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg
 
 # The banner image of archive page
 archive_img:
