@@ -33,3 +33,14 @@ title: 推挽输出与开漏输出
 
 - **I2C总线：** 开漏输出常用于I2C总线上，可以实现多个设备共享总线的通信。
 - **温湿度传感器：** 许多温湿度传感器的输出为开漏输出，可以与微控制器的数字输入引脚直接连接。
+
+### 具体实例：
+
+|             | 推挽输出                                      | 开漏输出                                 |
+|-------------|---------------------------------------------|--------------------------------------|
+| 高电平       | P-MOS激活N-MOS断开 3.3V                    | P-MOS断开N-MOS都拿开由外部电路决定 |
+| 低电平       | P-MOS断开N-MOS激活0V                       | P-MOS断开N-MOS激活0V               |
+| 优点         | 可以直接输出3.3V                            | 配合外部电路 更加灵活                |
+| 缺点         | 只能输出3.3V                                | 高电平实际是高阻态 无法输出电流     |
+
+![推挽输出与开漏输出示意图](http://m.qpic.cn/psc?/V13b34Em4WUa5I/ruAMsa53pVQWN7FLK88i5r*XgQgfwtt.U5bvJbCoyPLUGZKPn4XzpeMK6*ZqoZQtimgCxQbABah0lKMaNa8jtliP8GBKyT5CEWeQoRglRJk!/b&bo=swdkA7MHZAMBFzA!&rf=viewer_4)
