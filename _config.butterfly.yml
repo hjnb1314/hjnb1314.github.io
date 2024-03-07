@@ -45,7 +45,7 @@ favicon: /img/favicon.png
 # Avatar (頭像)
 avatar:
   img: "./img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png"
-  effect: true
+  effect: false
 
 # Disable all banner image
 disable_top_img: false
@@ -684,14 +684,14 @@ canvas_nest:
   color: '0,0,255' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
   opacity: 0.7 # the opacity of line (0~1), default: 0.5.
   zIndex: -1 # z-index property of the background, default: -1.
-  count: 44 # the number of lines, default: 99.
-  mobile: false
+  count: 80 # the number of lines, default: 99.
+  mobile: true
 
 # Mouse click effects: fireworks (鼠標點擊效果: 煙火特效)
 fireworks:
-  enable: false
-  zIndex: 9999 # -1 or 9999
-  mobile: false
+  enable: true
+  zIndex: 999 # -1 or 9999
+  mobile: true
 
 # Mouse click effects: Heart symbol (鼠標點擊效果: 愛心)
 click_heart:
