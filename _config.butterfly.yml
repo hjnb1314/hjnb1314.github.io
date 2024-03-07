@@ -643,7 +643,7 @@ tag_ui: # 留空或 index
 background: https://img1.baidu.com/it/u=1604651837,1908860120&fm=253&fmt=auto&app=138&f=JPEG?w=948&h=500
 
 # Footer Background
-footer_bg: false
+footer_bg: true
 
 # the position of bottom right button/default unit: px (右下角按鈕距離底部的距離/默認單位為px)
 rightside-bottom:
