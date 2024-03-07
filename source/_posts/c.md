@@ -43,4 +43,4 @@ title: 推挽输出与开漏输出
 | 优点         | 可以直接输出3.3V                            | 配合外部电路 更加灵活                |
 | 缺点         | 只能输出3.3V                                | 高电平实际是高阻态 无法输出电流     |
 
-![推挽输出与开漏输出示意图](http://m.qpic.cn/psc?/V13b34Em4WUa5I/ruAMsa53pVQWN7FLK88i5r*XgQgfwtt.U5bvJbCoyPLUGZKPn4XzpeMK6*ZqoZQtimgCxQbABah0lKMaNa8jtliP8GBKyT5CEWeQoRglRJk!/b&bo=swdkA7MHZAMBFzA!&rf=viewer_4)
+![推挽输出与开漏输出示意图](https://s2.loli.net/2024/03/07/IZrDjReYhb4zqN2.jpg)
