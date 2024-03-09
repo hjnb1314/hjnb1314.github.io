@@ -138,21 +138,37 @@ live2d:
 
     # hexo-butterfly-categories-card
 # see https://akilar.top/posts/a9131002/
-categoryBar:
+# categoryBar:
+#   enable: true # 开关
+#   priority: 5 #过滤器优先权
+#   enable_page: / # 应用页面
+#   layout: # 挂载容器类型
+#     type: id
+#     name: recent-posts
+#     index: 0
+#   column: odd # odd：3列 | even：4列
+#   row: 1 #显示行数，默认两行，超过行数切换为滚动显示
+#   message:
+#     - descr: 嵌入式学习笔记
+#       cover: https://source.fomal.cc/img/default_cover_44.webp
+#     - descr: 其他
+#       cover: https://source.fomal.cc/img/default_cover_41.webp
+#     # - descr: 其他
+#     #   cover: https://source.fomal.cc/img/default_cover_42.webp
+#   custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
+
+# tag-plugins-plus
+# see https://akilar.top/posts/615e2dec/
+tag_plugins:
   enable: true # 开关
   priority: 5 #过滤器优先权
-  enable_page: / # 应用页面
-  layout: # 挂载容器类型
-    type: id
-    name: recent-posts
-    index: 0
-  column: odd # odd：3列 | even：4列
-  row: 1 #显示行数，默认两行，超过行数切换为滚动显示
-  message:
-    - descr: 嵌入式学习笔记
-      cover: https://source.fomal.cc/img/default_cover_44.webp
-    - descr: 其他
-      cover: https://source.fomal.cc/img/default_cover_41.webp
-    # - descr: 其他
-    #   cover: https://source.fomal.cc/img/default_cover_42.webp
-  custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
+  issues: false #issues标签依赖注入开关
+  link:
+    placeholder: /img/link.png #link_card标签默认的图标图片
+  CDN:
+    anima: https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css #动画标签anima的依赖
+    jquery: https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js #issues标签依赖
+    issues: https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/issues.js #issues标签依赖
+    iconfont: //at.alicdn.com/t/font_2032782_8d5kxvn09md.js #参看https://akilar.top/posts/d2ebecef/
+    carousel: https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js
+    tag_plugins_css: https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css
