@@ -4,25 +4,6 @@
   
     
     <entry>
-      <title>推挽输出与开漏输出</title>
-      <link href="/c/"/>
-      <url>/c/</url>
-      
-        <content type="html"><![CDATA[<h1 id="推挽输出与开漏输出"><a href="#推挽输出与开漏输出" class="headerlink" title="推挽输出与开漏输出"></a>推挽输出与开漏输出</h1><h2 id="推挽输出（Push-Pull-Output）"><a href="#推挽输出（Push-Pull-Output）" class="headerlink" title="推挽输出（Push-Pull Output）"></a>推挽输出（Push-Pull Output）</h2><p>推挽输出是一种常见的数字电路输出配置，通常用于驱动负载，如LED、电机等。在推挽输出中，使用了两个互补的晶体管，一个用于提供高电平输出，另一个用于提供低电平输出。这两个晶体管可以同时工作，使输出可以提供较高的驱动能力和速度。</p><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ul><li><strong>高驱动能力：</strong> 由于使用了两个互补的晶体管，推挽输出可以提供较高的电流输出能力，适用于驱动较大负载。</li><li><strong>快速切换速度：</strong> 两个晶体管可以快速切换，因此推挽输出可以实现高速的电平变化，适用于需要快速响应的应用场景。</li><li><strong>适用范围广：</strong> 由于其性能稳定且输出能力较强，推挽输出被广泛应用于各种数字电路中。</li></ul><h3 id="适用场景："><a href="#适用场景：" class="headerlink" title="适用场景："></a>适用场景：</h3><ul><li><strong>驱动电机：</strong> 推挽输出可以提供足够的电流驱动电机，适用于各种类型的电机驱动。</li><li><strong>LED控制：</strong> 推挽输出可以提供足够的电流和快速的切换速度，适用于LED灯带、显示屏等LED控制场景。</li></ul><h2 id="开漏输出（Open-Drain-Output）"><a href="#开漏输出（Open-Drain-Output）" class="headerlink" title="开漏输出（Open-Drain Output）"></a>开漏输出（Open-Drain Output）</h2><p>开漏输出是另一种常见的数字电路输出配置，也常用于驱动负载。在开漏输出中，晶体管只提供了一个方向的电流流动路径，当输出为低电平时，晶体管导通，输出接地；当输出为高电平时，晶体管截止，输出不连接到任何电源。</p><h3 id="特点：-1"><a href="#特点：-1" class="headerlink" title="特点："></a>特点：</h3><ul><li><strong>适用于双电源系统：</strong> 开漏输出可以很容易地与其他电路结合，适用于双电源系统中。</li><li><strong>电平转换：</strong> 通过外部上拉电阻，可以将开漏输出的低电平信号转换为需要的高电平信号。</li><li><strong>节省功耗：</strong> 在输出为高电平时，开漏输出不消耗静态功耗，可以节省能源。</li></ul><h3 id="适用场景：-1"><a href="#适用场景：-1" class="headerlink" title="适用场景："></a>适用场景：</h3><ul><li><strong>I2C总线：</strong> 开漏输出常用于I2C总线上，可以实现多个设备共享总线的通信。</li><li><strong>温湿度传感器：</strong> 许多温湿度传感器的输出为开漏输出，可以与微控制器的数字输入引脚直接连接。</li></ul><h3 id="具体实例："><a href="#具体实例：" class="headerlink" title="具体实例："></a>具体实例：</h3><table><thead><tr><th></th><th>推挽输出</th><th>开漏输出</th></tr></thead><tbody><tr><td>高电平</td><td>P-MOS激活N-MOS断开 3.3V</td><td>P-MOS断开N-MOS都拿开由外部电路决定</td></tr><tr><td>低电平</td><td>P-MOS断开N-MOS激活0V</td><td>P-MOS断开N-MOS激活0V</td></tr><tr><td>优点</td><td>可以直接输出3.3V</td><td>配合外部电路 更加灵活</td></tr><tr><td>缺点</td><td>只能输出3.3V</td><td>高电平实际是高阻态 无法输出电流</td></tr></tbody></table><p><img src="https://s2.loli.net/2024/03/07/IZrDjReYhb4zqN2.jpg" alt="推挽输出与开漏输出示意图"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 嵌入式学习笔记 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>My Blog</title>
       <link href="/h/"/>
       <url>/h/</url>
@@ -33,6 +14,25 @@
       <categories>
           
           <category> 其他 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>推挽输出与开漏输出</title>
+      <link href="/c/"/>
+      <url>/c/</url>
+      
+        <content type="html"><![CDATA[<h1 id="推挽输出与开漏输出"><a href="#推挽输出与开漏输出" class="headerlink" title="推挽输出与开漏输出"></a>推挽输出与开漏输出</h1><h2 id="推挽输出（Push-Pull-Output）"><a href="#推挽输出（Push-Pull-Output）" class="headerlink" title="推挽输出（Push-Pull Output）"></a>推挽输出（Push-Pull Output）</h2><p>推挽输出是一种常见的数字电路输出配置，通常用于驱动负载，如LED、电机等。在推挽输出中，使用了两个互补的晶体管，一个用于提供高电平输出，另一个用于提供低电平输出。这两个晶体管可以同时工作，使输出可以提供较高的驱动能力和速度。</p><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ul><li><strong>高驱动能力：</strong> 由于使用了两个互补的晶体管，推挽输出可以提供较高的电流输出能力，适用于驱动较大负载。</li><li><strong>快速切换速度：</strong> 两个晶体管可以快速切换，因此推挽输出可以实现高速的电平变化，适用于需要快速响应的应用场景。</li><li><strong>适用范围广：</strong> 由于其性能稳定且输出能力较强，推挽输出被广泛应用于各种数字电路中。</li></ul><h3 id="适用场景："><a href="#适用场景：" class="headerlink" title="适用场景："></a>适用场景：</h3><ul><li><strong>驱动电机：</strong> 推挽输出可以提供足够的电流驱动电机，适用于各种类型的电机驱动。</li><li><strong>LED控制：</strong> 推挽输出可以提供足够的电流和快速的切换速度，适用于LED灯带、显示屏等LED控制场景。</li></ul><h2 id="开漏输出（Open-Drain-Output）"><a href="#开漏输出（Open-Drain-Output）" class="headerlink" title="开漏输出（Open-Drain Output）"></a>开漏输出（Open-Drain Output）</h2><p>开漏输出是另一种常见的数字电路输出配置，也常用于驱动负载。在开漏输出中，晶体管只提供了一个方向的电流流动路径，当输出为低电平时，晶体管导通，输出接地；当输出为高电平时，晶体管截止，输出不连接到任何电源。</p><h3 id="特点：-1"><a href="#特点：-1" class="headerlink" title="特点："></a>特点：</h3><ul><li><strong>适用于双电源系统：</strong> 开漏输出可以很容易地与其他电路结合，适用于双电源系统中。</li><li><strong>电平转换：</strong> 通过外部上拉电阻，可以将开漏输出的低电平信号转换为需要的高电平信号。</li><li><strong>节省功耗：</strong> 在输出为高电平时，开漏输出不消耗静态功耗，可以节省能源。</li></ul><h3 id="适用场景：-1"><a href="#适用场景：-1" class="headerlink" title="适用场景："></a>适用场景：</h3><ul><li><strong>I2C总线：</strong> 开漏输出常用于I2C总线上，可以实现多个设备共享总线的通信。</li><li><strong>温湿度传感器：</strong> 许多温湿度传感器的输出为开漏输出，可以与微控制器的数字输入引脚直接连接。</li></ul><h3 id="具体实例："><a href="#具体实例：" class="headerlink" title="具体实例："></a>具体实例：</h3><table><thead><tr><th></th><th>推挽输出</th><th>开漏输出</th></tr></thead><tbody><tr><td>高电平</td><td>P-MOS激活N-MOS断开 3.3V</td><td>P-MOS断开N-MOS都拿开由外部电路决定</td></tr><tr><td>低电平</td><td>P-MOS断开N-MOS激活0V</td><td>P-MOS断开N-MOS激活0V</td></tr><tr><td>优点</td><td>可以直接输出3.3V</td><td>配合外部电路 更加灵活</td></tr><tr><td>缺点</td><td>只能输出3.3V</td><td>高电平实际是高阻态 无法输出电流</td></tr></tbody></table><p><img src="https://s2.loli.net/2024/03/07/IZrDjReYhb4zqN2.jpg" alt="推挽输出与开漏输出示意图"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 嵌入式学习笔记 </category>
           
       </categories>
       
@@ -67,17 +67,6 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
@@ -89,9 +78,9 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -103,6 +92,17 @@
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
