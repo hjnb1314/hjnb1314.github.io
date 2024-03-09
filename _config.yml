@@ -139,7 +139,7 @@ live2d:
     # hexo-butterfly-categories-card
 # see https://akilar.top/posts/a9131002/
 categoryBar:
-  enable: false # 开关
+  enable: true # 开关
   priority: 5 #过滤器优先权
   enable_page: / # 应用页面
   layout: # 挂载容器类型
@@ -151,8 +151,8 @@ categoryBar:
   message:
     - descr: 嵌入式学习笔记
       cover: https://source.fomal.cc/img/default_cover_44.webp
-    # - descr: 课外学习笔记
-    #   cover: https://source.fomal.cc/img/default_cover_41.webp
     - descr: 其他
-      cover: https://source.fomal.cc/img/default_cover_42.webp
+      cover: https://source.fomal.cc/img/default_cover_41.webp
+    # - descr: 其他
+    #   cover: https://source.fomal.cc/img/default_cover_42.webp
   custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
