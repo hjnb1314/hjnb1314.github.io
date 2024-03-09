@@ -10,7 +10,10 @@ nav:
 # Menu 目錄
 menu:
   首页: / || fas fa-home
-  归档: /archives/ || fas fa-archive
+   文章 || icon--article || faa-tada || hide:
+    归档: /archives/ || icon-guidang1 || faa-tada
+    标签: /Tags/ || icon-sekuaibiaoqian || faa-tada
+    分类: /Categories/ || icon-fenlei || faa-tada
   # 标签: /tags/ || fas fa-tags
   # 分类: /categories/ || fas fa-folder-open
   列表||fas fa-list:
