@@ -136,23 +136,4 @@ live2d:
     show: true # 手机中是否展示
 
 
-    # hexo-butterfly-categories-card
-# see https://akilar.top/posts/a9131002/
-categoryBar:
-  enable: true # 开关
-  priority: 5 #过滤器优先权
-  enable_page: / # 应用页面
-  layout: # 挂载容器类型
-    type: id
-    name: recent-posts
-    index: 0
-  column: odd # odd：3列 | even：4列
-  row: 1 #显示行数，默认两行，超过行数切换为滚动显示
-  message:
-    - descr: 嵌入式学习笔记
-      cover: https://source.fomal.cc/img/default_cover_44.webp
-    - descr: 其他
-      cover: https://source.fomal.cc/img/default_cover_41.webp
-    # - descr: 其他
-    #   cover: https://source.fomal.cc/img/default_cover_42.webp
-  custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
+  
