@@ -3,8 +3,8 @@ title: Markdown学习笔记
 categories:
   - 其他
 ---
-
-### 1.1 代码块
+# 1.Markdown语法自带格式
+## 1.1 代码块
 
 <details>
 <summary style="font-size: larger;">渲染演示</summary>
@@ -45,3 +45,4 @@ git add . && git commit -m "npm publish" && npm version patch
 git push
 ```
 </details>
+
