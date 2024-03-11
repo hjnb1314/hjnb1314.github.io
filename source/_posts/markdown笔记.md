@@ -396,15 +396,12 @@ $$
 <details>
 <summary style="font-size: larger;">配置参数</summary>
 
-
-
+```shell
 1.字体: logo, code
 2.颜色: red,yellow,green,cyan,blue,gray
 3.大小: small, h4, h3, h2, h1, large, huge, ultra
 4.对齐方向: left, center, right
-
-
-
+```
 
 </details>
 
@@ -455,11 +452,13 @@ $$
 <details>
 <summary style="font-size: larger;">配置参数</summary>
 
+```shell
 1.字体: logo, code
 2.颜色: red,yellow,green,cyan,blue,gray
 3.大小: small, h4, h3, h2, h1, large, huge, ultra
 4.对齐方向: left, center, right
 
+```
 </details>
 
 
@@ -537,6 +536,7 @@ Any content (support inline tags too.io).
 <details>
 <summary style="font-size: larger;">参数配置</summary>
 
+```shell
 1.自带icon
 
 | 参数      | 用法     |
@@ -554,7 +554,7 @@ Any content (support inline tags too.io).
 | no-icon   | 【可选】可配置自定义 icon (只支持 fontawesome 图标, 也可以配置 no-icon )|
 | style     | 【可选】可以覆盖配置中的 style （simple/modern/flat/disabled）  |
 
-
+```
 
 
 
