@@ -207,17 +207,6 @@ git push
 <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
-* Java
-* Python
-* ...
-
-+ Java
-+ Python
-+ ...
-
-- Java
-- Python
-- ...
 
 </details>
 
