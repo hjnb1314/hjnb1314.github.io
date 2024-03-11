@@ -10,7 +10,7 @@ C语言一经出现就以其功能丰富、表达能力强、灵活方便、应�
 
 ## 1、程序：Hello World.
 
-![Hello World.](https://pic4.zhimg.com/80/v2-3bd2a9d342b5eb65eaa22a10b8280c8f_720w.webp)
+![Hello World.](https://img0.baidu.com/it/u=3932813903,2293022634&fm=253&fmt=auto&app=120&f=JPEG?w=1600&h=800)
 
 运行结果如下：
 
@@ -122,13 +122,12 @@ C语言的常量可以分为直接常量和符号常量。
 - 字符常量：‘a’、‘M’；
 - 字符串常量：”I love China!”
 
-![常量示例](https://pic1.zhimg.com/80/v2-450b3349cad2dc0de1779dd0b9e58d08_720w.webp)
 
 在C语言中，可以用一个标识符来表示一个常量，称之为符号常量。符号常量在使用之前必须先定义，其一般形式为：
 
+```
 #define 标识符 常量值
-
-![符号常量示例](https://pic2.zhimg.com/80/v2-a8d788d5a6b557f5229694cb96552405_720w.webp)
+```
 
 符号常量不可以被改变。
 
