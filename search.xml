@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Markdown学习笔记</title>
+      <link href="/a/"/>
+      <url>/a/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-Markdown语法自带格式"><a href="#1-Markdown语法自带格式" class="headerlink" title="1.Markdown语法自带格式"></a>1.Markdown语法自带格式</h1><h2 id="1-1-代码块"><a href="#1-1-代码块" class="headerlink" title="1.1 代码块"></a>1.1 代码块</h2><details><summary style="font-size: larger;">示例源码</summary><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">VSCode终端</span></span><br><span class="line">hexo clean; hexo s</span><br><span class="line">hexo clean; hexo g; hexo d</span><br><span class="line">git add .; git commit -m &quot;npm publish&quot;; npm version patch; </span><br><span class="line">git push</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Cmder终端</span></span><br><span class="line">hexo clean &amp;&amp; hexo s</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;npm publish&quot; &amp;&amp; npm version patch</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></details><h2 id="1-2-多级标题"><a href="#1-2-多级标题" class="headerlink" title="1.2 多级标题"></a>1.2 多级标题</h2><details><summary style="font-size: larger;">示例源码</summary><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">H1</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># H2</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## H3</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">### H4</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#### H5</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">##### H6</span></span></span><br></pre></td></tr></table></figure></details><h2 id="1-3-文字样式"><a href="#1-3-文字样式" class="headerlink" title="1.3 文字样式"></a>1.3 文字样式</h2><details><summary style="font-size: larger;">示例源码</summary><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt;下划线演示&lt;/u&gt;</span><br><span class="line"></span><br><span class="line">文字**加粗**演示</span><br><span class="line"></span><br><span class="line">文字*斜体*演示</span><br><span class="line"></span><br><span class="line">文本`高亮`演示</span><br><span class="line"></span><br><span class="line">文本~~删除~~线演示</span><br><span class="line"></span><br><span class="line">&lt;font size = 5&gt;5号字&lt;/font&gt;</span><br><span class="line">&lt;font face=&quot;黑体&quot;&gt;黑体&lt;/font&gt;</span><br><span class="line">&lt;font color=blue&gt;蓝色&lt;/font&gt;</span><br><span class="line"></span><br><span class="line">&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=MistyRose&gt;这里的背景色是：MistyRosen，此处输入任意想输入的内容&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</span><br></pre></td></tr></table></figure></details>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>推挽输出与开漏输出</title>
       <link href="/c/"/>
       <url>/c/</url>
@@ -28,25 +47,6 @@
       <url>/h/</url>
       
         <content type="html"><![CDATA[<h1 id="记录学习点滴"><a href="#记录学习点滴" class="headerlink" title="记录学习点滴"></a>记录学习点滴</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> 其他 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Markdown学习笔记</title>
-      <link href="/markdown%E7%AC%94%E8%AE%B0/"/>
-      <url>/markdown%E7%AC%94%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="1-Markdown语法自带格式"><a href="#1-Markdown语法自带格式" class="headerlink" title="1.Markdown语法自带格式"></a>1.Markdown语法自带格式</h1><h2 id="1-1-代码块"><a href="#1-1-代码块" class="headerlink" title="1.1 代码块"></a>1.1 代码块</h2><details><summary style="font-size: larger;">渲染演示</summary><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">VSCode终端</span></span><br><span class="line">hexo clean; hexo s</span><br><span class="line">hexo clean; hexo g; hexo d</span><br><span class="line">git add .; git commit -m &quot;npm publish&quot;; npm version patch; </span><br><span class="line">git push</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Cmder终端</span></span><br><span class="line">hexo clean &amp;&amp; hexo s</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;npm publish&quot; &amp;&amp; npm version patch</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></details><details><summary style="font-size: larger;">示例源码</summary><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">VSCode终端</span><br><span class="line">hexo clean; hexo s</span><br><span class="line">hexo clean; hexo g; hexo d</span><br><span class="line">git add .; git commit -m &quot;npm publish&quot;; npm version patch;</span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line">Cmder终端</span><br><span class="line">hexo clean &amp;&amp; hexo s</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;npm publish&quot; &amp;&amp; npm version patch</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></details>]]></content>
       
       
       <categories>
