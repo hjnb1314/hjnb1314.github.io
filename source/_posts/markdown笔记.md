@@ -205,21 +205,24 @@ git push
 
 
 <details>
-<summary style="font-size: larger;">渲染演示</summary>
-
-* Java
-* Python
-* ...
-
-+ Java
-+ Python
-+ ...
-
-- Java
-- Python
-- ...
-
+  <summary style="font-size: larger;">渲染演示</summary>
+  <ul>
+    <li>Java</li>
+    <li>Python</li>
+    
+  </ul>
+  <ul>
+    <li>+ Java</li>
+    <li>+ Python</li>
+   
+  </ul>
+  <ul>
+    <li>- Java</li>
+    <li>- Python</li>
+    
+  </ul>
 </details>
+
 
 # 1.6.2 有序列表
 
