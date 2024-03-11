@@ -26,7 +26,7 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 
@@ -44,7 +44,7 @@ hexo clean && hexo g && hexo d
 git add . && git commit -m "npm publish" && npm version patch
 git push
 ```
-</details>
+</details> -->
 
 ## 1.2 多级标题
 
@@ -63,13 +63,13 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 
 见本文章标题
 
-</details>
+</details> -->
 
 ## 1.3 文字样式
 
@@ -97,7 +97,7 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 <u>下划线演示</u>
@@ -116,7 +116,7 @@ git push
 
 <table><tr><td bgcolor=MistyRose>这里的背景色是：MistyRosen，此处输入任意想输入的内容</td></tr></table>
 
-</details>
+</details> -->
 
 ## 1.4 引用
 
@@ -141,7 +141,7 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 >  Java
@@ -155,7 +155,7 @@ git push
 > 
 > ....
 
-</details>
+</details> -->
 
 ## 1.5 分割线
 
@@ -172,13 +172,13 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 ---
 ***
 
-</details>
+</details> -->
 
 ## 1.6 列表(*,+,-跟空格都可以)
 # 1.6.1 无序列表
@@ -186,6 +186,7 @@ git push
 <summary style="font-size: larger;">示例源码</summary>
 
 ```shell
+
 
 * Java
 * Python
@@ -204,11 +205,22 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
+* Java
+* Python
+* ...
 
-</details>
++ Java
++ Python
++ ...
+
+- Java
+- Python
+- ...
+
+</details> -->
 
 # 1.6.2 有序列表
 
@@ -228,7 +240,7 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 # 注意后面有空格
@@ -237,7 +249,7 @@ git push
 3. 
 4. 
 
-</details>
+</details> -->
 
 ## 1.7 图片
 
@@ -256,7 +268,7 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 # 本地图片
@@ -264,7 +276,7 @@ git push
 # 在线图片
 ![code](https://cdn.jsdelivr.net/gh/fomalhaut1998/markdown_pic/img/code.png)
 
-</details>
+</details> -->
 
 ## 1.8 表格
 
@@ -284,7 +296,7 @@ git push
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 | 项目标号 | 资金     | 备注 |
@@ -293,7 +305,7 @@ git push
 | 2        | 200，000 | 无   |
 | 3        | 300,600  | 重要 |
 
-</details>
+</details> -->
 
 ## 1.9 公式
 
@@ -311,14 +323,14 @@ $$
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 $$
 \Gamma(z)=\int_0^\infty t^{z-1}e^{-t}dt.
 $$
 
-</details>
+</details> -->
 
 # 2.Butterfly外挂标签
 ## 2.1 行内文本样式 text
@@ -356,7 +368,7 @@ $$
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 1. 带 {% u 下划线 %} 的文本
@@ -366,7 +378,7 @@ $$
 5. 键盘样式的文本 {% kbd command %} + {% kbd D %}
 6. 密码样式的文本：{% psw 这里没有验证码 %}
 
-</details>
+</details> -->
 
 ## 2.2 行内文本 span
 
@@ -412,7 +424,7 @@ $$
 
 </details>
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 
@@ -424,7 +436,7 @@ $$
 {% span center small, A Wonderful Theme for Hexo %}
 
 
-</details>
+</details> -->
 
 
 ## 2.3 段落文本 p
@@ -468,7 +480,7 @@ $$
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 - 彩色文字
@@ -478,7 +490,7 @@ $$
 {% p center logo large, Volantis %}
 {% p center small, A Wonderful Theme for Hexo %}
 
-</details>
+</details> -->
 
 ## 2.4 引用note
 
@@ -647,7 +659,7 @@ Any content (support inline tags too.io).
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示(自带icon)</summary>
 
 1.simple样式
@@ -774,10 +786,10 @@ Any content (support inline tags too.io).
 
 ```
 
-</details>
+</details> -->
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 {% tip %}default{% endtip %}
@@ -794,7 +806,7 @@ Any content (support inline tags too.io).
 {% tip bell %}bell{% endtip %}
 {% tip fa-atom %}自定义font awesome图标{% endtip %}
 
-</details>
+</details> -->
 
 ## 2.6 动态标签 anima
 
@@ -854,7 +866,7 @@ You can regulate the speed of the animation by adding the CSS class or . faa-fas
 
 </details>
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 
 1.On DOM load（当页面加载时显示动画）
@@ -885,7 +897,7 @@ You can regulate the speed of the animation by adding the CSS class or . faa-fas
 
 
 
-</details>
+</details> -->
 
 ## 2.7 复选列表 checkbox
 
@@ -932,7 +944,7 @@ You can regulate the speed of the animation by adding the CSS class or . faa-fas
 </details>
 
 
-<details>
+<!-- <details>
 <summary style="font-size: larger;">渲染演示</summary>
 {% checkbox 纯文本测试 %}
 {% checkbox checked, 支持简单的 [markdown](https://guides.github.com/features/mastering-markdown/) 语法 %}
@@ -945,7 +957,7 @@ You can regulate the speed of the animation by adding the CSS class or . faa-fas
 {% checkbox minus yellow checked, 减少 %}
 {% checkbox times red checked, 叉 %}
 
-</details>
+</details> -->
 
 
 <!-- 
