@@ -205,24 +205,21 @@ git push
 
 
 <details>
-  <summary style="font-size: larger;">渲染演示</summary>
-  <ul>
-    <li>Java</li>
-    <li>Python</li>
-    
-  </ul>
-  <ul>
-    <li>+ Java</li>
-    <li>+ Python</li>
-   
-  </ul>
-  <ul>
-    <li>- Java</li>
-    <li>- Python</li>
-    
-  </ul>
-</details>
+<summary style="font-size: larger;">渲染演示</summary>
 
+* Java
+* Python
+* ...
+
++ Java
++ Python
++ ...
+
+- Java
+- Python
+- ...
+
+</details>
 
 # 1.6.2 有序列表
 
@@ -960,6 +957,7 @@ You can regulate the speed of the animation by adding the CSS class or . faa-fas
 {% checkbox times red checked, 叉 %}
 
 </details>
+
 
 <!-- 
 ## 1.5 分割线
