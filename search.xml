@@ -23,6 +23,25 @@
     
     
     <entry>
+      <title>PWM学习笔记</title>
+      <link href="/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="深入理解PWM（脉宽调制）"><a href="#深入理解PWM（脉宽调制）" class="headerlink" title="深入理解PWM（脉宽调制）"></a>深入理解PWM（脉宽调制）</h1><h2 id="1-什么是PWM？"><a href="#1-什么是PWM？" class="headerlink" title="1. 什么是PWM？"></a>1. 什么是PWM？</h2><p>PWM，即脉宽调制（Pulse Width Modulation），是一种电子技术，通过调节电信号的高电平持续时间和低电平持续时间来控制输出信号的强度或表现形式。它是一种周期性的波形，周期内包含了高电平和低电平两种状态。</p><h2 id="2-PWM的重要参数是什么？"><a href="#2-PWM的重要参数是什么？" class="headerlink" title="2. PWM的重要参数是什么？"></a>2. PWM的重要参数是什么？</h2><p>在PWM中，有两个非常重要的参数：</p><ul><li>周期（T）：表示PWM波形一个完整周期所持续的时间长度。</li><li>占空比（Duty Cycle）：指高电平在一个周期内所占的比例，通常用百分比表示。</li></ul><h2 id="3-PWM的应用场景有哪些？"><a href="#3-PWM的应用场景有哪些？" class="headerlink" title="3. PWM的应用场景有哪些？"></a>3. PWM的应用场景有哪些？</h2><p>PWM技术被广泛应用于各种领域，包括：</p><ul><li>通信领域的脉宽调制技术。</li><li>LED照明领域中，可以通过PWM波形来调节LED灯的亮度，实现调光效果。</li><li>控制蜂鸣器、电机等设备，控制其工作状态和频率。</li></ul><h2 id="4-PWM波形是如何产生的？"><a href="#4-PWM波形是如何产生的？" class="headerlink" title="4. PWM波形是如何产生的？"></a>4. PWM波形是如何产生的？</h2><h3 id="4-1-基本原理"><a href="#4-1-基本原理" class="headerlink" title="4.1 基本原理"></a>4.1 基本原理</h3><p>PWM波形的生成基于定时器和GPIO引脚。通过配置定时器产生高低电平信号，并通过GPIO引脚输出，从而形成PWM波形。</p><h3 id="4-2-早期实现方式"><a href="#4-2-早期实现方式" class="headerlink" title="4.2 早期实现方式"></a>4.2 早期实现方式</h3><p>在早期的简单单片机中，由于没有专用的PWM定时器，需要手动结合GPIO和定时器模块来生成PWM波形。</p><h3 id="4-3-现代实现方式"><a href="#4-3-现代实现方式" class="headerlink" title="4.3 现代实现方式"></a>4.3 现代实现方式</h3><p>现代单片机通常内置了PWM模块，将定时器和GPIO引脚绑定，通过寄存器配置即可产生PWM波形，操作更加简便。</p><h2 id="5-生成PWM波形的步骤是怎样的？"><a href="#5-生成PWM波形的步骤是怎样的？" class="headerlink" title="5. 生成PWM波形的步骤是怎样的？"></a>5. 生成PWM波形的步骤是怎样的？</h2><ol><li>设置PWM的周期和占空比。</li><li>系统时钟通过二级分频后与周期相乘，得到PWM波形的实际周期。</li><li>根据设定的占空比，确定PWM波形的高电平持续时间和低电平持续时间。</li></ol><h2 id="6-注意事项"><a href="#6-注意事项" class="headerlink" title="6. 注意事项"></a>6. 注意事项</h2><ul><li>在配置PWM时，需要根据实际需求设置合适的周期和占空比，以达到所需的控制效果。</li><li>系统时钟的设置和分频情况也需要考虑，以确保PWM波形的稳定和准确输出。</li></ul><p>通过了解PWM的原理和应用，我们可以更好地利用这项技术来实现各种电子设备的控制和调节。</p><h2 id="7-stm32关于pwm"><a href="#7-stm32关于pwm" class="headerlink" title="7.stm32关于pwm"></a>7.stm32关于pwm</h2><p><img src="https://img-blog.csdnimg.cn/direct/ee476233af8448bc8fc856fe15ccf2a6.png" alt="stm32关于pwm"></p><h2 id="8-代码步骤"><a href="#8-代码步骤" class="headerlink" title="8.代码步骤"></a>8.代码步骤</h2><p>1.开启时钟源</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);//开启TIM2的时钟</span><br><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//开启GPIOA的时钟</span><br></pre></td></tr></table></figure><p>2.GPIO初始化配置</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*GPIO初始化*/</span><br><span class="line">GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</span><br><span class="line">GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;</span><br><span class="line">GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br></pre></td></tr></table></figure><p>3.配置时钟源 TIM</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TIM_InternalClockConfig(TIM2);//选择TIM2为内部时钟，若不调用此函数，TIM默认也为内部时钟</span><br><span class="line"></span><br><span class="line">/*时基单元初始化*/</span><br><span class="line">TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;//定义结构体变量</span><br><span class="line">TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;     //时钟分频，选择不分频，此参数用于配置滤波器时钟，不影响时基单元功能</span><br><span class="line">TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //计数器模式，选择向上计数</span><br><span class="line">TIM_TimeBaseInitStructure.TIM_Period = 100 - 1;                 //计数周期，即ARR的值</span><br><span class="line">TIM_TimeBaseInitStructure.TIM_Prescaler = 36 - 1;               //预分频器，即PSC的值</span><br><span class="line">TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0;            //重复计数器，高级定时器才会用到</span><br><span class="line">TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseInitStructure);             //将结构体变量交给TIM_TimeBaseInit，配置TIM2的时基单元</span><br></pre></td></tr></table></figure><p>4.输出比较初始化</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">TIM_OCInitTypeDef TIM_OCInitStructure;//定义结构体变量</span><br><span class="line">TIM_OCStructInit(&amp;TIM_OCInitStructure);                         //结构体初始化，若结构体没有完整赋值</span><br><span class="line">                                                                //则最好执行此函数，给结构体所有成员都赋一个默认值</span><br><span class="line">                                                                //避免结构体初值不确定的问题</span><br><span class="line">TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;               //输出比较模式，选择PWM模式1</span><br><span class="line">TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;       //输出极性，选择为高，若选择极性为低，则输出高低电平取反</span><br><span class="line">TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;   //输出使能</span><br><span class="line">TIM_OCInitStructure.TIM_Pulse = 0;//初始的CCR值</span><br><span class="line">TIM_OC3Init(TIM2, &amp;TIM_OCInitStructure);                        //将结构体变量交给TIM_OC3Init，配置TIM2的输出比较通道3</span><br></pre></td></tr></table></figure><p>5.TIM使能<br>&#x2F;TIM使能&#x2F;</p><p>TIM_Cmd(TIM2, ENABLE); &#x2F;&#x2F;使能TIM2，定时器开始运行</p><p>6.强制修改CCR（影响占空比）的值</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TIM_SetCompare3(TIM2, Compare);//设置CCR3的值</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 嵌入式学习笔记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Markdown学习笔记</title>
       <link href="/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -33,25 +52,6 @@
       <categories>
           
           <category> 其他 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>PWM学习笔记</title>
-      <link href="/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-      <url>/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="深入理解PWM（脉宽调制）"><a href="#深入理解PWM（脉宽调制）" class="headerlink" title="深入理解PWM（脉宽调制）"></a>深入理解PWM（脉宽调制）</h1><h2 id="1-什么是PWM？"><a href="#1-什么是PWM？" class="headerlink" title="1. 什么是PWM？"></a>1. 什么是PWM？</h2><p>PWM，即脉宽调制（Pulse Width Modulation），是一种电子技术，通过调节电信号的高电平持续时间和低电平持续时间来控制输出信号的强度或表现形式。它是一种周期性的波形，周期内包含了高电平和低电平两种状态。</p><h2 id="2-PWM的重要参数是什么？"><a href="#2-PWM的重要参数是什么？" class="headerlink" title="2. PWM的重要参数是什么？"></a>2. PWM的重要参数是什么？</h2><p>在PWM中，有两个非常重要的参数：</p><ul><li>周期（T）：表示PWM波形一个完整周期所持续的时间长度。</li><li>占空比（Duty Cycle）：指高电平在一个周期内所占的比例，通常用百分比表示。</li></ul><h2 id="3-PWM的应用场景有哪些？"><a href="#3-PWM的应用场景有哪些？" class="headerlink" title="3. PWM的应用场景有哪些？"></a>3. PWM的应用场景有哪些？</h2><p>PWM技术被广泛应用于各种领域，包括：</p><ul><li>通信领域的脉宽调制技术。</li><li>LED照明领域中，可以通过PWM波形来调节LED灯的亮度，实现调光效果。</li><li>控制蜂鸣器、电机等设备，控制其工作状态和频率。</li></ul><h2 id="4-PWM波形是如何产生的？"><a href="#4-PWM波形是如何产生的？" class="headerlink" title="4. PWM波形是如何产生的？"></a>4. PWM波形是如何产生的？</h2><h3 id="4-1-基本原理"><a href="#4-1-基本原理" class="headerlink" title="4.1 基本原理"></a>4.1 基本原理</h3><p>PWM波形的生成基于定时器和GPIO引脚。通过配置定时器产生高低电平信号，并通过GPIO引脚输出，从而形成PWM波形。</p><h3 id="4-2-早期实现方式"><a href="#4-2-早期实现方式" class="headerlink" title="4.2 早期实现方式"></a>4.2 早期实现方式</h3><p>在早期的简单单片机中，由于没有专用的PWM定时器，需要手动结合GPIO和定时器模块来生成PWM波形。</p><h3 id="4-3-现代实现方式"><a href="#4-3-现代实现方式" class="headerlink" title="4.3 现代实现方式"></a>4.3 现代实现方式</h3><p>现代单片机通常内置了PWM模块，将定时器和GPIO引脚绑定，通过寄存器配置即可产生PWM波形，操作更加简便。</p><h2 id="5-生成PWM波形的步骤是怎样的？"><a href="#5-生成PWM波形的步骤是怎样的？" class="headerlink" title="5. 生成PWM波形的步骤是怎样的？"></a>5. 生成PWM波形的步骤是怎样的？</h2><ol><li>设置PWM的周期和占空比。</li><li>系统时钟通过二级分频后与周期相乘，得到PWM波形的实际周期。</li><li>根据设定的占空比，确定PWM波形的高电平持续时间和低电平持续时间。</li></ol><h2 id="6-注意事项"><a href="#6-注意事项" class="headerlink" title="6. 注意事项"></a>6. 注意事项</h2><ul><li>在配置PWM时，需要根据实际需求设置合适的周期和占空比，以达到所需的控制效果。</li><li>系统时钟的设置和分频情况也需要考虑，以确保PWM波形的稳定和准确输出。</li></ul><p>通过了解PWM的原理和应用，我们可以更好地利用这项技术来实现各种电子设备的控制和调节。</p><h2 id="7-stm32关于pwm"><a href="#7-stm32关于pwm" class="headerlink" title="7.stm32关于pwm"></a>7.stm32关于pwm</h2><p><a href="https://img-blog.csdnimg.cn/direct/ee476233af8448bc8fc856fe15ccf2a6.png">https://img-blog.csdnimg.cn/direct/ee476233af8448bc8fc856fe15ccf2a6.png</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 嵌入式学习笔记 </category>
           
       </categories>
       
