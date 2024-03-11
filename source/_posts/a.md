@@ -105,8 +105,8 @@ git push
 </details>
 
 
-## 1.6 列表(*,+,-跟空格都可以)
-# 1.6.1 无序列表
+# 1.6 列表(*,+,-跟空格都可以)
+## 1.6.1 无序列表
 <details>
 <summary style="font-size: larger;">示例源码</summary>
 
@@ -130,7 +130,7 @@ git push
 </details>
 
 
-# 1.6.2 有序列表
+### 1.6.2 有序列表
 
 <details>
 <summary style="font-size: larger;">示例源码</summary>
