@@ -26,26 +26,6 @@ git push
 </details>
 
 
-<!-- <details>
-<summary style="font-size: larger;">渲染演示</summary>
-
-
-```shell
-
-VSCode终端
-hexo clean; hexo s
-hexo clean; hexo g; hexo d
-git add .; git commit -m "npm publish"; npm version patch;
-git push
-
-Cmder终端
-hexo clean && hexo s
-hexo clean && hexo g && hexo d
-git add . && git commit -m "npm publish" && npm version patch
-git push
-```
-</details> -->
-
 ## 1.2 多级标题
 
 <details>
@@ -62,14 +42,6 @@ git push
 
 </details>
 
-
-<!-- <details>
-<summary style="font-size: larger;">渲染演示</summary>
-
-
-见本文章标题
-
-</details> -->
 
 ## 1.3 文字样式
 
