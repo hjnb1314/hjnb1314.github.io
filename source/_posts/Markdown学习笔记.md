@@ -366,20 +366,20 @@ Any content (support inline tags too.io).
 ```shell
 1.自带icon
 
-| 参数      | 用法     |
-| --------  | -------- |
-| class     |【可选】标识，不同的标识有不同的配色 （ default / primary / success / info / warning / danger ） |
-| no-icon   | 【可选】不显示 icon|
-| style     | 【可选】可以覆盖配置中的 style （simple/modern/flat/disabled）  |
+| 参数    | 用法                                                                                             |
+| ------- | ------------------------------------------------------------------------------------------------ |
+| class   | 【可选】标识，不同的标识有不同的配色 （ default / primary / success / info / warning / danger ） |
+| no-icon | 【可选】不显示 icon                                                                              |
+| style   | 【可选】可以覆盖配置中的 style （simple/modern/flat/disabled）                                   |
 
 
 2.外部icon
 
-| 参数      | 用法     |
-| --------  | -------- |
-| class     | 【可选】标识，不同的标识有不同的配色 （ default / blue / pink / red / purple / orange / green ）） |
-| no-icon   | 【可选】可配置自定义 icon (只支持 fontawesome 图标, 也可以配置 no-icon )|
-| style     | 【可选】可以覆盖配置中的 style （simple/modern/flat/disabled）  |
+| 参数    | 用法                                                                                               |
+| ------- | -------------------------------------------------------------------------------------------------- |
+| class   | 【可选】标识，不同的标识有不同的配色 （ default / blue / pink / red / purple / orange / green ）） |
+| no-icon | 【可选】可配置自定义 icon (只支持 fontawesome 图标, 也可以配置 no-icon )                           |
+| style   | 【可选】可以覆盖配置中的 style （simple/modern/flat/disabled）                                     |
 
 ```
 
@@ -850,18 +850,18 @@ theme	查阅:Available Themes	主题
 
 ```shell
 1.用户信息卡片
-| {% ghcard fomalhaut1998 %} | {% ghcard fomalhaut1998, theme=vue %} |
-| -- | -- |
-| {% ghcard fomalhaut1998, theme=buefy %} | {% ghcard fomalhaut1998, theme=solarized-light %} |
-| {% ghcard fomalhaut1998, theme=onedark %} | {% ghcard fomalhaut1998, theme=solarized-dark %} |
-| {% ghcard fomalhaut1998, theme=algolia %} | {% ghcard fomalhaut1998, theme=calm %} |
+| {% ghcard fomalhaut1998 %}                | {% ghcard fomalhaut1998, theme=vue %}             |
+| ----------------------------------------- | ------------------------------------------------- |
+| {% ghcard fomalhaut1998, theme=buefy %}   | {% ghcard fomalhaut1998, theme=solarized-light %} |
+| {% ghcard fomalhaut1998, theme=onedark %} | {% ghcard fomalhaut1998, theme=solarized-dark %}  |
+| {% ghcard fomalhaut1998, theme=algolia %} | {% ghcard fomalhaut1998, theme=calm %}            |
 
 2.仓库信息卡片
-| {% ghcard volantis-x/hexo-theme-volantis %} | {% ghcard volantis-x/hexo-theme-volantis, theme=vue %} |
-| -- | -- |
-| {% ghcard volantis-x/hexo-theme-volantis, theme=buefy %} | {% ghcard volantis-x/hexo-theme-volantis, theme=solarized-light %} |
-| {% ghcard volantis-x/hexo-theme-volantis, theme=onedark %} | {% ghcard volantis-x/hexo-theme-volantis, theme=solarized-dark %} |
-| {% ghcard volantis-x/hexo-theme-volantis, theme=algolia %} | {% ghcard volantis-x/hexo-theme-volantis, theme=calm %} |
+| {% ghcard volantis-x/hexo-theme-volantis %}                | {% ghcard volantis-x/hexo-theme-volantis, theme=vue %}             |
+| ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| {% ghcard volantis-x/hexo-theme-volantis, theme=buefy %}   | {% ghcard volantis-x/hexo-theme-volantis, theme=solarized-light %} |
+| {% ghcard volantis-x/hexo-theme-volantis, theme=onedark %} | {% ghcard volantis-x/hexo-theme-volantis, theme=solarized-dark %}  |
+| {% ghcard volantis-x/hexo-theme-volantis, theme=algolia %} | {% ghcard volantis-x/hexo-theme-volantis, theme=calm %}            |
 
 ```
 
