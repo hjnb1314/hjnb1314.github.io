@@ -51,7 +51,7 @@ PWM波形的生成基于定时器和GPIO引脚。通过配置定时器产生高�
 通过了解PWM的原理和应用，我们可以更好地利用这项技术来实现各种电子设备的控制和调节。
 
 ## 7.stm32关于pwm
-![stm32关于pwm](https://img-blog.csdnimg.cn/direct/ee476233af8448bc8fc856fe15ccf2a6.png)
+![stm32关于pwm](https://s2.loli.net/2024/03/12/HUxKWMLRZapGY41.jpg)
 
 ## 8.代码步骤
 1.开启时钟源
