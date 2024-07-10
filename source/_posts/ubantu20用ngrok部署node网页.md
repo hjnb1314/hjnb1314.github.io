@@ -98,7 +98,7 @@ node server.js
 ## 4. 使用 ngrok 暴露本地服务器
 
 ### 4.1 安装和配置 ngrok
-如果还没有安装 ngrok，可以从 ngrok 官方网站 下载并安装。然后，通过以下命令配置你的 ngrok authtoken：
+如果还没有安装 ngrok，可以从 ngrok（https://dashboard.ngrok.com） 官方网站 下载并安装。然后，通过以下命令配置你的 ngrok authtoken：
 ```
 ngrok config add-authtoken <your-authtoken>
 ```
