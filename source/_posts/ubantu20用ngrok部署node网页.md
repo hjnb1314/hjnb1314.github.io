@@ -3,7 +3,7 @@ title: ubantu20通过ngrok部署node网页
 categories:
   - web学习笔记
 ---
-
+具体可参考本人github（test）仓库
 
 # 使用 ngrok 部署 Node.js 应用的完整流程
 
