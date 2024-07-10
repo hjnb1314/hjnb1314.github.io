@@ -998,6 +998,10 @@ categoryBar:
       cover: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage109.360doc.com%2FDownloadImg%2F2021%2F09%2F2501%2F231033624_1_20210925010834976&refer=http%3A%2F%2Fimage109.360doc.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1712567733&t=51bf0545bc9bb72f6fc0c354fec00fc7
     - descr: 其他
       cover: https://img1.baidu.com/it/u=1750617134,4086967370&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500
+    - descr: web学习笔记
+      cover: https://th.bing.com/th/id/OIP.2pJxnriPyF0fo869BBPruwHaEK?rs=1&pid=ImgDetMain
+    - descr: 小游戏
+      cover: https://th.bing.com/th/id/OIP.11v7ebsRJp7btoF86bTD2QHaEo?rs=1&pid=ImgDetMain
     # - descr: 其他
     #   cover: https://source.fomal.cc/img/default_cover_42.webp
   custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
