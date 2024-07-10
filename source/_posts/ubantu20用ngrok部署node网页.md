@@ -1,5 +1,5 @@
 ---
-title: ubantu20通过ngrok部署网页
+title: ubantu20通过ngrok部署node网页
 categories:
   - web学习笔记
 ---
