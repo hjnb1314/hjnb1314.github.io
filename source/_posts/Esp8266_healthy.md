@@ -2,6 +2,7 @@
 title: 基于ESP8266将健康数据上传华为云平台进行实时监控
 categories:
   - 嵌入式学习笔记
+top_img: ./img/index.jpg
 ---
 
 # 一、基于ESP8266的健康数据上传项目

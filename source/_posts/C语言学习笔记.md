@@ -2,6 +2,7 @@
 title: C语言学习笔记
 categories:
   - 项目合集
+top_img: ./img/index.jpg
 ---
 
 # 一、C语言基础

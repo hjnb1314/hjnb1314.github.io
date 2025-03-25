@@ -2,6 +2,7 @@
 title: Markdown学习笔记
 categories:
   - 其他
+top_img: ./img/index.jpg
 ---
 # 1.Markdown语法自带格式
 ## 1.1 代码块
