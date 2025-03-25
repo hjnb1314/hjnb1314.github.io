@@ -247,15 +247,73 @@ const wss = new WebSocket.Server({ server });
 
 const port = 3000;
 let latestData = null;
+let token = null;
+
+// 替换为你的实际华为云账号信息
+const authOptions = {
+    hostname: 'iam.cn-north-4.myhuaweicloud.com',
+    path: '/v3/auth/tokens',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+};
+
+const deviceOptions = {
+    hostname: '设备示例http接入网址',
+    path: `/v5/iot/填写项目id/devices/填写设备id/shadow`,
+    method: 'GET'
+};
+
+function getToken() {
+    // 请根据实际情况修改请求体中的内容
+    const authData = JSON.stringify({
+        "auth": {
+            "identity": {
+                "methods": ["password"],
+                "password": {
+                    "user": {
+                        "name": "", // 替换为你的IMA用户名
+                        "password": "", // 替换为你的IMA密码
+                        "domain": {
+                            "name": "" // 替换为你的用户名
+                        }
+                    }
+                }
+            },
+            "scope": {
+                "project": {
+                    "name": "cn-north-4"
+                }
+            }
+        }
+    });
+
+    const req = https.request(authOptions, (res) => {
+        token = res.headers['x-subject-token'];
+        console.log('获取到 Token:', token);
+    });
+
+    req.on('error', (error) => {
+        console.error('获取 Token 时出错:', error);
+    });
+
+    req.write(authData);
+    req.end();
+}
 
 function fetchData() {
+    if (!token) {
+        console.log('Token 未获取到，重新获取...');
+        getToken();
+        return;
+    }
+
     const options = {
-        hostname: 'd82876d880.st1.iotda-app.cn-north-4.myhuaweicloud.com',//此为华为云开发区的
-        path: `/v5/iot/cd78f21bdcc148a389db46e1ca4da21e/devices/67dd40765367f573f77af58b_123456789/shadow`,
-        method: 'GET',
+        ...deviceOptions,
         headers: {
             'Content-Type': 'application/json',
-            'X-Auth-Token': '...'  // 替换为你的实际 Token
+            'X-Auth-Token': token
         }
     };
 
@@ -285,12 +343,21 @@ function fetchData() {
         });
     });
 
-    req.on('error', (error) => { console.error('请求错误:', error); });
+    req.on('error', (error) => {
+        console.error('请求错误:', error);
+        // Token 可能过期，重新获取
+        getToken();
+    });
     req.end();
 }
 
-setInterval(fetchData, 5000);
-fetchData();
+// 每 23 小时获取一次新的 Token
+setInterval(getToken, 23 * 60 * 60 * 1000);
+// 每 4 秒读取一次设备信息
+setInterval(fetchData, 4000);
+
+// 初始获取 Token
+getToken();
 
 server.listen(port, () => {
     console.log(`服务器运行在端口 ${port}`);
