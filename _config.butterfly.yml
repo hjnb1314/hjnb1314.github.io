@@ -44,17 +44,17 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://uy.wzznft.com/i/2025/03/25/j0uc72.jpg
+  img: ./img/Hj.jpg
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://uy.wzznft.com/i/2025/03/25/j4etxi.jpg
+index_img: ./img/index.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://uy.wzznft.com/i/2025/03/25/j4etxi.jpg
+default_top_img: ./img/index.jpg
 
 # The banner image of archive page
 archive_img:
@@ -994,6 +994,8 @@ categoryBar:
   column: odd # odd：3列 | even：4列
   row: 1 #显示行数，默认两行，超过行数切换为滚动显示
   message:
+    - descr: 项目合集
+      cover: ./img/1.jpg
     - descr: 嵌入式学习笔记
       cover: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage109.360doc.com%2FDownloadImg%2F2021%2F09%2F2501%2F231033624_1_20210925010834976&refer=http%3A%2F%2Fimage109.360doc.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1712567733&t=51bf0545bc9bb72f6fc0c354fec00fc7
     - descr: 其他
@@ -1002,6 +1004,7 @@ categoryBar:
       cover: https://th.bing.com/th/id/OIP.2pJxnriPyF0fo869BBPruwHaEK?rs=1&pid=ImgDetMain
     - descr: 小游戏
       cover: https://th.bing.com/th/id/OIP.11v7ebsRJp7btoF86bTD2QHaEo?rs=1&pid=ImgDetMain
+
     # - descr: 其他
     #   cover: https://source.fomal.cc/img/default_cover_42.webp
   custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
