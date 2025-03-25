@@ -4,25 +4,6 @@
   
     
     <entry>
-      <title>github上传文件操作</title>
-      <link href="/github%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
-      <url>/github%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-      
-        <content type="html"><![CDATA[<p>要把项目工程上传到 GitHub，你可以按以下步骤操作：</p><ol><li><strong>注册并登录 GitHub</strong><br>如果你还没有 GitHub 账号，需要先在 GitHub 官网 注册。注册完成后，登录到你的账号。</li><li><strong>创建新的仓库</strong><br>登录 GitHub 后，点击右上角的 “+” 号，选择 “New repository”。<br>在 “Repository name” 中为你的项目取一个合适的名称。<br>可以添加一个描述，选择仓库的可见性（公开或私有）。<br>其他选项可以根据需要选择，最后点击 “Create repository” 完成创建。</li><li><strong>安装 Git</strong><br>你需要在本地安装 Git 工具，可从 Git 官网 下载适合你操作系统的版本并完成安装。</li><li><strong>配置 Git</strong><br>安装完成后，打开终端（Windows 用户可以使用 Git Bash），设置你的用户名和邮箱，这将关联到你在 GitHub 上的操作：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;your_username&quot;</span><br><span class="line">git config --global user.email &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure><ol start="5"><li><strong>初始化本地仓库</strong><br>在终端中，使用 <code>cd</code> 命令进入你项目工程所在的目录，然后执行以下命令来初始化一个新的 Git 仓库：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><ol start="6"><li><strong>添加文件到暂存区</strong><br>使用以下命令将项目中的所有文件添加到 Git 的暂存区：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>如果你只想添加特定的文件，可以把 <code>.</code> 替换为文件名。<br>7. <strong>提交文件到本地仓库</strong><br>添加完文件后，需要提交这些更改到本地仓库，并附上一个描述性的提交信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;Initial commit&quot;</span><br></pre></td></tr></table></figure><ol start="8"><li><strong>关联本地仓库和 GitHub 仓库</strong><br>在 GitHub 上创建的仓库页面中，复制仓库的 HTTPS 或 SSH 地址。然后在终端中执行以下命令，将本地仓库与 GitHub 仓库关联起来：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;repository_url&gt;</span><br></pre></td></tr></table></figure><p>这里的 <code>&lt;repository_url&gt;</code> 是你从 GitHub 复制的仓库地址。<br>9. <strong>推送文件到 GitHub</strong><br>最后，使用以下命令将本地仓库中的文件推送到 GitHub 仓库：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure><p>如果你使用的是旧版本的 Git，默认分支可能是 <code>master</code>，则命令为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>执行完以上步骤后，你的项目工程就成功上传到 GitHub 了。之后，你可以使用 <code>git add</code>、<code>git commit</code> 和 <code>git push</code> 命令来更新项目。</p><p>执行完以上步骤后，你的项目工程就成功上传到 GitHub 了。之后，你可以使用 <code>git add</code>、<code>git commit</code> 和 <code>git push</code> 命令来更新项目。</p><h3 id="遇到错误的解决办法"><a href="#遇到错误的解决办法" class="headerlink" title="遇到错误的解决办法"></a>遇到错误的解决办法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access &#x27;https://github.com/hjnb1314/Esp8266_healthy_HuaweiCloud.git/&#x27;: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</span><br></pre></td></tr></table></figure><p><code>OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</code> 错误通常表示在与 GitHub 服务器进行 SSL 通信时连接被远程服务器重置，这可能由多种原因导致，下面为你提供一些可能的解决办法：</p><ol><li><strong>检查网络连接</strong><br>网络不稳定、防火墙限制或者代理设置都可能引发此问题。你可以尝试以下操作：<ul><li>切换网络：尝试切换到不同的网络环境，比如从 Wi-Fi 切换到移动数据，或者相反。</li><li>关闭防火墙或代理：暂时关闭本地的防火墙或者代理软件，然后再次尝试推送代码。例如，如果你使用的是 Windows 系统，可以在控制面板中找到防火墙设置并暂时关闭它；如果你使用了代理软件，如 Shadowsocks 等，将其关闭。</li></ul></li><li><strong>检查 GitHub 状态</strong><br>GitHub 偶尔会出现服务中断的情况。你可以访问 GitHub 状态页面 查看 GitHub 当前的服务状态。若 GitHub 正在经历服务中断，你只能等待其恢复正常。</li><li><strong>更新 Git 和 OpenSSL</strong><br>使用旧版本的 Git 或 OpenSSL 可能会导致与 GitHub 服务器的通信出现问题。你可以尝试更新这些软件：<ul><li>更新 Git：访问 Git 官方下载页面，下载并安装最新版本的 Git。</li><li>更新 OpenSSL：如果你使用的是 Windows 系统，Git 自带了 OpenSSL，更新 Git 通常也会更新 OpenSSL。</li></ul></li><li><strong>重新配置远程仓库地址</strong><br>有时候，远程仓库地址可能会出现问题。你可以移除现有的远程仓库配置，然后重新添加：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 移除现有的远程仓库配置</span><br><span class="line">git remote remove origin</span><br><span class="line"># 重新添加远程仓库配置</span><br><span class="line">git remote add origin ...url</span><br><span class="line"># 再次尝试推送</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 其他 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>ubantu20通过ngrok部署node网页</title>
       <link href="/ubantu20%E7%94%A8ngrok%E9%83%A8%E7%BD%B2node%E7%BD%91%E9%A1%B5/"/>
       <url>/ubantu20%E7%94%A8ngrok%E9%83%A8%E7%BD%B2node%E7%BD%91%E9%A1%B5/</url>
@@ -33,25 +14,6 @@
       <categories>
           
           <category> web学习笔记 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>My Blog</title>
-      <link href="/%E5%BA%8F%E7%AB%A0/"/>
-      <url>/%E5%BA%8F%E7%AB%A0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="记录学习点滴"><a href="#记录学习点滴" class="headerlink" title="记录学习点滴"></a>记录学习点滴</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> 其他 </category>
           
       </categories>
       
@@ -80,6 +42,25 @@
     
     
     <entry>
+      <title>My Blog</title>
+      <link href="/%E5%BA%8F%E7%AB%A0/"/>
+      <url>/%E5%BA%8F%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="记录学习点滴"><a href="#记录学习点滴" class="headerlink" title="记录学习点滴"></a>记录学习点滴</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>推挽输出与开漏输出</title>
       <link href="/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%B8%8E%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA/"/>
       <url>/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%B8%8E%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA/</url>
@@ -90,25 +71,6 @@
       <categories>
           
           <category> 嵌入式学习笔记 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>2048</title>
-      <link href="/2048/"/>
-      <url>/2048/</url>
-      
-        <content type="html"><![CDATA[<h3 id="操作方式："><a href="#操作方式：" class="headerlink" title="操作方式："></a>操作方式：</h3><p>使用键盘的上、下、左、右键来控制方块的移动：</p><ul><li>W键：向上移动方块</li><li>S键：向下移动方块</li><li>A键：向左移动方块</li><li>D键：向右移动方块</li></ul><h3 id="游戏规则："><a href="#游戏规则：" class="headerlink" title="游戏规则："></a>游戏规则：</h3><ol><li>游戏开始时，屏幕上会出现两个数字方块（2或4）。</li><li>使用键盘上、下、左、右键移动所有方块，所有的方块会同时移动，并在每次移动时生成一个新的数字方块。</li><li>当两个相同数字的方块碰撞在一起时，它们会合并成一个数字方块，数字值为它们的和。</li><li>每次移动，如果有方块合并，则得分增加。</li><li>游戏结束条件：<ul><li>没有可以移动的空格，并且没有可以合并的相邻方块时，游戏结束。</li><li>达到2048的方块时，游戏胜利。</li></ul></li></ol><div style="text-align: center;">    <div class="game-container" >    <html><head>    <title>2048 Game</title>    <style>        body {            font-family: Arial, sans-serif;            margin: 0;            padding: 0;        }        .container {            width: 480px;            position: relative;        }        .grid-container {            display: grid;            grid-template-columns: repeat(4, 100px);            grid-gap: 15px;            background-color: #bbada0;            padding: 15px;            border-radius: 10px;            position: relative;        }        .tile {            width: 100px;            height: 100px;            background: #cdc1b4;            border-radius: 3px;            display: flex;            justify-content: center;            align-items: center;            font-size: 30px;            font-weight: bold;            color: #776e65;        }        .tile-2 {            background: #eee4da;        }        .tile-4 {            background: #ede0c8;        }        .tile-8 {            background: #f2b179;            color: #f9f6f2;        }        /* Additional tile styles for 16, 32, 64, etc. go here */        .game-message {            width: 500px;            text-align: center;            position: absolute;            top: 50%;            left: 50%;            transform: translate(-50%, -50%);            display: none;        }        .game-message p {            font-size: 36px;            font-weight: bold;            color: #776e65;        }        .game-message .button {            background: #8f7a66;            color: #f9f6f2;            border: none;            padding: 10px 20px;            font-size: 18px;            cursor: pointer;            margin-top: 20px;        }        .game-message a {            color: inherit;            text-decoration: none;        }    </style></head><body>    <div class="container">        <div class="grid-container" id="grid-container">            <!-- Tiles will be generated here -->        </div>        <div class="game-message" id="game-message">            <p>Game Over!</p>            <button class="button" onclick="setup()">Try again</button>        </div>    </div>    <script>        // Logic for the 2048 game        var grid, score, gameOver;        function setup() {            grid = [[0, 0, 0, 0],                    [0, 0, 0, 0],                    [0, 0, 0, 0],                    [0, 0, 0, 0]];            score = 0;            gameOver = false;            addNumber();            addNumber();            updateView();            document.getElementById('game-message').style.display = 'none';        }        function addNumber() {            var options = [];            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    if (grid[i][j] === 0) {                        options.push({                            x: i,                            y: j                        });                    }                }            }            if (options.length > 0) {                var spot = options[Math.floor(Math.random() * options.length)];                var randomNumber = Math.random() > 0.5 ? 2 : 4;                grid[spot.x][spot.y] = randomNumber;            }        }        function updateView() {            var container = document.getElementById('grid-container');            container.innerHTML = '';            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    var tile = document.createElement('div');                    tile.classList.add('tile');                    var value = grid[i][j];                    if (value > 0) {                        tile.textContent = value;                        tile.classList.add('tile-' + value);                    }                    container.appendChild(tile);                }            }        }        function copyGrid(grid) {            var extra = [[0, 0, 0, 0],                         [0, 0, 0, 0],                         [0, 0, 0, 0],                         [0, 0, 0, 0]];            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    extra[i][j] = grid[i][j];                }            }            return extra;        }        function compare(a, b) {            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    if (a[i][j] !== b[i][j]) {                        return true;                    }                }            }            return false;        }        function slide(row) {            var arr = row.filter(val => val);            var missing = 4 - arr.length;            var zeros = Array(missing).fill(0);            arr = zeros.concat(arr);            return arr;        }        function combine(row) {            for (var i = 3; i >= 1; i--) {                var a = row[i];                var b = row[i - 1];                if (a == b) {                    row[i] = a + b;                    score += row[i];                    row[i - 1] = 0;                }            }            return row;        }        function operate(row) {            row = slide(row);            row = combine(row);            row = slide(row);            return row;        }        function flipGrid(grid) {            for (var i = 0; i < 4; i++) {                grid[i].reverse();            }            return grid;        }        function rotateGrid(grid) {            var newGrid = [[0, 0, 0, 0],                           [0, 0, 0, 0],                           [0, 0, 0, 0],                           [0, 0, 0, 0]];            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    newGrid[i][j] = grid[j][i];                }            }            return newGrid;        }        function isGameOver() {            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    if (grid[i][j] == 0) {                        return false;                    }                    if (j !== 3 && grid[i][j] === grid[i][j + 1]) {                        return false;                    }                    if (i !== 3 && grid[i][j] === grid[i + 1][j]) {                        return false;                    }                }            }            return true;        }        function checkGameOver() {            if (isGameOver()) {                document.getElementById('game-message').style.display = 'block';                gameOver = true;            }        }        function keyPressed(event) {            if (gameOver) {                return;            }            var flipped = false;            var rotated = false;            var played = true;            switch(event.keyCode) {                case 68: // Right                    // No action needed                    break;                case 83: // Down                    grid = rotateGrid(grid);                    rotated = true;                    break;                case 65: // Left                    grid = flipGrid(grid);                    flipped = true;                    break;                case 87: // Up                    grid = rotateGrid(grid);                    rotated = true;                    flipped = true;                    break;                default:                    played = false;            }            if (played) {                var past = copyGrid(grid);                for (var i = 0; i < 4; i++) {                    grid[i] = operate(grid[i]);                }                var changed = compare(past, grid);                if (flipped) {                    grid = flipGrid(grid);                }                if (rotated) {                    grid = rotateGrid(grid);                    grid = rotateGrid(grid);                    grid = rotateGrid(grid);                }                if (changed) {                    addNumber();                }                updateView();                checkGameOver();            }        }        document.addEventListener('keydown', keyPressed);        // Variables to track touch start positions        var touchStartX = null;        var touchStartY = null;        // Event listener for touch start        document.addEventListener('touchstart', function(event) {            if (event.touches.length > 1) return; // Only single touch events            touchStartX = event.touches[0].clientX;            touchStartY = event.touches[0].clientY;            event.preventDefault(); // Prevent scrolling when inside DIV        }, { passive: false });        // Event listener for touch move        document.addEventListener('touchmove', function(event) {            event.preventDefault(); // Prevent scrolling when inside DIV        }, { passive: false });        // Event listener for touch end        document.addEventListener('touchend', function(event) {            if (!touchStartX || !touchStartY || gameOver) return;            var deltaX = event.changedTouches[0].clientX - touchStartX;            var deltaY = event.changedTouches[0].clientY - touchStartY;            // Determine swipe direction            if (Math.abs(deltaX) > Math.abs(deltaY)) { // Horizontal swipe                if (deltaX > 0) {                    moveRight();                } else {                    moveLeft();                }            } else { // Vertical swipe                if (deltaY > 0) {                    moveDown();                } else {                    moveUp();                }            }            touchStartX = null;            touchStartY = null;        });        // Move functions        function moveLeft() { keyPressed({ keyCode: 37 }); }        function moveUp() { keyPressed({ keyCode: 38 }); }        function moveRight() { keyPressed({ keyCode: 39 }); }        function moveDown() { keyPressed({ keyCode: 40 }); }        setup();    </script></body></html></div></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 小游戏 </category>
           
       </categories>
       
@@ -211,6 +173,44 @@
     </entry>
     
     
+    
+    <entry>
+      <title>github上传文件操作</title>
+      <link href="/github%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+      <url>/github%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<p>要把项目工程上传到 GitHub，你可以按以下步骤操作：</p><ol><li><strong>注册并登录 GitHub</strong><br>如果你还没有 GitHub 账号，需要先在 GitHub 官网 注册。注册完成后，登录到你的账号。</li><li><strong>创建新的仓库</strong><br>登录 GitHub 后，点击右上角的 “+” 号，选择 “New repository”。<br>在 “Repository name” 中为你的项目取一个合适的名称。<br>可以添加一个描述，选择仓库的可见性（公开或私有）。<br>其他选项可以根据需要选择，最后点击 “Create repository” 完成创建。</li><li><strong>安装 Git</strong><br>你需要在本地安装 Git 工具，可从 Git 官网 下载适合你操作系统的版本并完成安装。</li><li><strong>配置 Git</strong><br>安装完成后，打开终端（Windows 用户可以使用 Git Bash），设置你的用户名和邮箱，这将关联到你在 GitHub 上的操作：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;your_username&quot;</span><br><span class="line">git config --global user.email &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure><ol start="5"><li><strong>初始化本地仓库</strong><br>在终端中，使用 <code>cd</code> 命令进入你项目工程所在的目录，然后执行以下命令来初始化一个新的 Git 仓库：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><ol start="6"><li><strong>添加文件到暂存区</strong><br>使用以下命令将项目中的所有文件添加到 Git 的暂存区：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>如果你只想添加特定的文件，可以把 <code>.</code> 替换为文件名。<br>7. <strong>提交文件到本地仓库</strong><br>添加完文件后，需要提交这些更改到本地仓库，并附上一个描述性的提交信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;Initial commit&quot;</span><br></pre></td></tr></table></figure><ol start="8"><li><strong>关联本地仓库和 GitHub 仓库</strong><br>在 GitHub 上创建的仓库页面中，复制仓库的 HTTPS 或 SSH 地址。然后在终端中执行以下命令，将本地仓库与 GitHub 仓库关联起来：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;repository_url&gt;</span><br></pre></td></tr></table></figure><p>这里的 <code>&lt;repository_url&gt;</code> 是你从 GitHub 复制的仓库地址。<br>9. <strong>推送文件到 GitHub</strong><br>最后，使用以下命令将本地仓库中的文件推送到 GitHub 仓库：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure><p>如果你使用的是旧版本的 Git，默认分支可能是 <code>master</code>，则命令为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>执行完以上步骤后，你的项目工程就成功上传到 GitHub 了。之后，你可以使用 <code>git add</code>、<code>git commit</code> 和 <code>git push</code> 命令来更新项目。</p><p>执行完以上步骤后，你的项目工程就成功上传到 GitHub 了。之后，你可以使用 <code>git add</code>、<code>git commit</code> 和 <code>git push</code> 命令来更新项目。</p><h3 id="遇到错误的解决办法"><a href="#遇到错误的解决办法" class="headerlink" title="遇到错误的解决办法"></a>遇到错误的解决办法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access &#x27;https://github.com/hjnb1314/Esp8266_healthy_HuaweiCloud.git/&#x27;: OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</span><br></pre></td></tr></table></figure><p><code>OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</code> 错误通常表示在与 GitHub 服务器进行 SSL 通信时连接被远程服务器重置，这可能由多种原因导致，下面为你提供一些可能的解决办法：</p><ol><li><strong>检查网络连接</strong><br>网络不稳定、防火墙限制或者代理设置都可能引发此问题。你可以尝试以下操作：<ul><li>切换网络：尝试切换到不同的网络环境，比如从 Wi-Fi 切换到移动数据，或者相反。</li><li>关闭防火墙或代理：暂时关闭本地的防火墙或者代理软件，然后再次尝试推送代码。例如，如果你使用的是 Windows 系统，可以在控制面板中找到防火墙设置并暂时关闭它；如果你使用了代理软件，如 Shadowsocks 等，将其关闭。</li></ul></li><li><strong>检查 GitHub 状态</strong><br>GitHub 偶尔会出现服务中断的情况。你可以访问 GitHub 状态页面 查看 GitHub 当前的服务状态。若 GitHub 正在经历服务中断，你只能等待其恢复正常。</li><li><strong>更新 Git 和 OpenSSL</strong><br>使用旧版本的 Git 或 OpenSSL 可能会导致与 GitHub 服务器的通信出现问题。你可以尝试更新这些软件：<ul><li>更新 Git：访问 Git 官方下载页面，下载并安装最新版本的 Git。</li><li>更新 OpenSSL：如果你使用的是 Windows 系统，Git 自带了 OpenSSL，更新 Git 通常也会更新 OpenSSL。</li></ul></li><li><strong>重新配置远程仓库地址</strong><br>有时候，远程仓库地址可能会出现问题。你可以移除现有的远程仓库配置，然后重新添加：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 移除现有的远程仓库配置</span><br><span class="line">git remote remove origin</span><br><span class="line"># 重新添加远程仓库配置</span><br><span class="line">git remote add origin ...url</span><br><span class="line"># 再次尝试推送</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2048</title>
+      <link href="/2048/"/>
+      <url>/2048/</url>
+      
+        <content type="html"><![CDATA[<h3 id="操作方式："><a href="#操作方式：" class="headerlink" title="操作方式："></a>操作方式：</h3><p>使用键盘的上、下、左、右键来控制方块的移动：</p><ul><li>W键：向上移动方块</li><li>S键：向下移动方块</li><li>A键：向左移动方块</li><li>D键：向右移动方块</li></ul><h3 id="游戏规则："><a href="#游戏规则：" class="headerlink" title="游戏规则："></a>游戏规则：</h3><ol><li>游戏开始时，屏幕上会出现两个数字方块（2或4）。</li><li>使用键盘上、下、左、右键移动所有方块，所有的方块会同时移动，并在每次移动时生成一个新的数字方块。</li><li>当两个相同数字的方块碰撞在一起时，它们会合并成一个数字方块，数字值为它们的和。</li><li>每次移动，如果有方块合并，则得分增加。</li><li>游戏结束条件：<ul><li>没有可以移动的空格，并且没有可以合并的相邻方块时，游戏结束。</li><li>达到2048的方块时，游戏胜利。</li></ul></li></ol><div style="text-align: center;">    <div class="game-container" >    <html><head>    <title>2048 Game</title>    <style>        body {            font-family: Arial, sans-serif;            margin: 0;            padding: 0;        }        .container {            width: 480px;            position: relative;        }        .grid-container {            display: grid;            grid-template-columns: repeat(4, 100px);            grid-gap: 15px;            background-color: #bbada0;            padding: 15px;            border-radius: 10px;            position: relative;        }        .tile {            width: 100px;            height: 100px;            background: #cdc1b4;            border-radius: 3px;            display: flex;            justify-content: center;            align-items: center;            font-size: 30px;            font-weight: bold;            color: #776e65;        }        .tile-2 {            background: #eee4da;        }        .tile-4 {            background: #ede0c8;        }        .tile-8 {            background: #f2b179;            color: #f9f6f2;        }        /* Additional tile styles for 16, 32, 64, etc. go here */        .game-message {            width: 500px;            text-align: center;            position: absolute;            top: 50%;            left: 50%;            transform: translate(-50%, -50%);            display: none;        }        .game-message p {            font-size: 36px;            font-weight: bold;            color: #776e65;        }        .game-message .button {            background: #8f7a66;            color: #f9f6f2;            border: none;            padding: 10px 20px;            font-size: 18px;            cursor: pointer;            margin-top: 20px;        }        .game-message a {            color: inherit;            text-decoration: none;        }    </style></head><body>    <div class="container">        <div class="grid-container" id="grid-container">            <!-- Tiles will be generated here -->        </div>        <div class="game-message" id="game-message">            <p>Game Over!</p>            <button class="button" onclick="setup()">Try again</button>        </div>    </div>    <script>        // Logic for the 2048 game        var grid, score, gameOver;        function setup() {            grid = [[0, 0, 0, 0],                    [0, 0, 0, 0],                    [0, 0, 0, 0],                    [0, 0, 0, 0]];            score = 0;            gameOver = false;            addNumber();            addNumber();            updateView();            document.getElementById('game-message').style.display = 'none';        }        function addNumber() {            var options = [];            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    if (grid[i][j] === 0) {                        options.push({                            x: i,                            y: j                        });                    }                }            }            if (options.length > 0) {                var spot = options[Math.floor(Math.random() * options.length)];                var randomNumber = Math.random() > 0.5 ? 2 : 4;                grid[spot.x][spot.y] = randomNumber;            }        }        function updateView() {            var container = document.getElementById('grid-container');            container.innerHTML = '';            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    var tile = document.createElement('div');                    tile.classList.add('tile');                    var value = grid[i][j];                    if (value > 0) {                        tile.textContent = value;                        tile.classList.add('tile-' + value);                    }                    container.appendChild(tile);                }            }        }        function copyGrid(grid) {            var extra = [[0, 0, 0, 0],                         [0, 0, 0, 0],                         [0, 0, 0, 0],                         [0, 0, 0, 0]];            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    extra[i][j] = grid[i][j];                }            }            return extra;        }        function compare(a, b) {            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    if (a[i][j] !== b[i][j]) {                        return true;                    }                }            }            return false;        }        function slide(row) {            var arr = row.filter(val => val);            var missing = 4 - arr.length;            var zeros = Array(missing).fill(0);            arr = zeros.concat(arr);            return arr;        }        function combine(row) {            for (var i = 3; i >= 1; i--) {                var a = row[i];                var b = row[i - 1];                if (a == b) {                    row[i] = a + b;                    score += row[i];                    row[i - 1] = 0;                }            }            return row;        }        function operate(row) {            row = slide(row);            row = combine(row);            row = slide(row);            return row;        }        function flipGrid(grid) {            for (var i = 0; i < 4; i++) {                grid[i].reverse();            }            return grid;        }        function rotateGrid(grid) {            var newGrid = [[0, 0, 0, 0],                           [0, 0, 0, 0],                           [0, 0, 0, 0],                           [0, 0, 0, 0]];            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    newGrid[i][j] = grid[j][i];                }            }            return newGrid;        }        function isGameOver() {            for (var i = 0; i < 4; i++) {                for (var j = 0; j < 4; j++) {                    if (grid[i][j] == 0) {                        return false;                    }                    if (j !== 3 && grid[i][j] === grid[i][j + 1]) {                        return false;                    }                    if (i !== 3 && grid[i][j] === grid[i + 1][j]) {                        return false;                    }                }            }            return true;        }        function checkGameOver() {            if (isGameOver()) {                document.getElementById('game-message').style.display = 'block';                gameOver = true;            }        }        function keyPressed(event) {            if (gameOver) {                return;            }            var flipped = false;            var rotated = false;            var played = true;            switch(event.keyCode) {                case 68: // Right                    // No action needed                    break;                case 83: // Down                    grid = rotateGrid(grid);                    rotated = true;                    break;                case 65: // Left                    grid = flipGrid(grid);                    flipped = true;                    break;                case 87: // Up                    grid = rotateGrid(grid);                    rotated = true;                    flipped = true;                    break;                default:                    played = false;            }            if (played) {                var past = copyGrid(grid);                for (var i = 0; i < 4; i++) {                    grid[i] = operate(grid[i]);                }                var changed = compare(past, grid);                if (flipped) {                    grid = flipGrid(grid);                }                if (rotated) {                    grid = rotateGrid(grid);                    grid = rotateGrid(grid);                    grid = rotateGrid(grid);                }                if (changed) {                    addNumber();                }                updateView();                checkGameOver();            }        }        document.addEventListener('keydown', keyPressed);        // Variables to track touch start positions        var touchStartX = null;        var touchStartY = null;        // Event listener for touch start        document.addEventListener('touchstart', function(event) {            if (event.touches.length > 1) return; // Only single touch events            touchStartX = event.touches[0].clientX;            touchStartY = event.touches[0].clientY;            event.preventDefault(); // Prevent scrolling when inside DIV        }, { passive: false });        // Event listener for touch move        document.addEventListener('touchmove', function(event) {            event.preventDefault(); // Prevent scrolling when inside DIV        }, { passive: false });        // Event listener for touch end        document.addEventListener('touchend', function(event) {            if (!touchStartX || !touchStartY || gameOver) return;            var deltaX = event.changedTouches[0].clientX - touchStartX;            var deltaY = event.changedTouches[0].clientY - touchStartY;            // Determine swipe direction            if (Math.abs(deltaX) > Math.abs(deltaY)) { // Horizontal swipe                if (deltaX > 0) {                    moveRight();                } else {                    moveLeft();                }            } else { // Vertical swipe                if (deltaY > 0) {                    moveDown();                } else {                    moveUp();                }            }            touchStartX = null;            touchStartY = null;        });        // Move functions        function moveLeft() { keyPressed({ keyCode: 37 }); }        function moveUp() { keyPressed({ keyCode: 38 }); }        function moveRight() { keyPressed({ keyCode: 39 }); }        function moveDown() { keyPressed({ keyCode: 40 }); }        setup();    </script></body></html></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小游戏 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
   
   
     
@@ -260,9 +260,9 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -271,9 +271,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
