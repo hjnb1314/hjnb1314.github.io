@@ -394,22 +394,22 @@ int32_t heart;
 int8_t validHeart;
 
 // WiFi设置
-const char* ssid = "Man";
-const char* password = "hjnb1314";
+const char* ssid = "WIFI名称";
+const char* password = "WIFI密码";
 
 // 接收到命令后上发的响应topic
-const char* Iot_link_MQTT_Topic_Report = "$oc/devices/64681485a1e0862b43d12061_1405242004/sys/properties/report";
-const char* topic_Commands_Response = "$oc/devices/64681485a1e0862b43d12061_1405242004/sys/commands/response/request_id=";
+const char* Iot_link_MQTT_Topic_Report = "$oc/devices/设备ID/sys/properties/report";
+const char* topic_Commands_Response = "$oc/devices/设备ID/sys/commands/response/request_id=";
 
 // 华为云接入地址
-const char* mqttServer = "d82876d880.st1.iotda-device.cn-north-4.myhuaweicloud.com";
+const char* mqttServer = ""; //华为云matt接入hostname
 // 接入端口
-const int mqttPort = 8883;
+const int mqttPort = ;//输入mqtt接入端口
 
 // MQTT连接参数
-const char* clientId = "67dd40765367f573f77af58b_123456789_0_0_2025032114";
-const char* mqttUser = "67dd40765367f573f77af58b_123456789";
-const char* mqttPassword = "f20697087821045ac819efe6f3b61dc25caf493947cebe23c686f7873ad7f40a";
+const char* clientId = "";//设备MQTTcilentId
+const char* mqttUser = "";//设备MQTT UserName
+const char* mqttPassword = "";//设备MQTT Password
 
 // 定义一个安全的WiFi客户端用于MQTTS连接
 WiFiClientSecure espClient;
