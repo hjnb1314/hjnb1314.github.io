@@ -222,7 +222,7 @@ aside:
   position: right # left or right
   display:
     archive: true
-    tag: true
+    tag: false
     category: true
   card_author:
     enable: true
