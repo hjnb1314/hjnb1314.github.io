@@ -2,7 +2,7 @@
 title: github上传文件操作
 categories:
   - 其他
-top_img: ./img/index.jpg
+top_img: ../img/index.jpg
 ---
 
 要把项目工程上传到 GitHub，你可以按以下步骤操作：

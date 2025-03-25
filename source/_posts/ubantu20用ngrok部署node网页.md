@@ -2,7 +2,7 @@
 title: ubantu20通过ngrok部署node网页
 categories:
   - web学习笔记
-top_img: ./img/index.jpg
+top_img: ../img/index.jpg
 ---
 具体可参考本人github（test）仓库
 

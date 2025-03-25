@@ -2,7 +2,7 @@
 title: C语言设计_智能五子棋
 categories:
   - 项目合集
-top_img: ./img/index.jpg
+top_img: ../img/index.jpg
 ---
 
 # C语言棋类游戏项目笔记

@@ -2,7 +2,7 @@
 title: PWM学习笔记
 categories:
   - 嵌入式学习笔记
-top_img: ./img/index.jpg
+top_img: ../img/index.jpg
 ---
 
 # 深入理解PWM（脉宽调制）
