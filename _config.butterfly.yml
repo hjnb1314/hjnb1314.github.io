@@ -44,17 +44,17 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: "./img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png"
+  img: https://uy.wzznft.com/i/2025/03/25/j0uc72.jpg
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://oss.012700.xyz/butterfly/2024/10/index.jpg
+index_img: https://uy.wzznft.com/i/2025/03/25/j4etxi.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://oss.012700.xyz/butterfly/2024/10/index.jpg
+default_top_img: https://uy.wzznft.com/i/2025/03/25/j4etxi.jpg
 
 # The banner image of archive page
 archive_img:
