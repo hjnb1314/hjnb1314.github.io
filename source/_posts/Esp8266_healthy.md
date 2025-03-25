@@ -61,7 +61,7 @@ SDA_PIN被重新定义为12（对应D6引脚），SCL_PIN保持为14（对应D5�
 
 ### ② 通信实现
 利用uniapp的网络请求功能，与后端服务器进行数据交互。通过HTTP请求获取华为云平台经后端处理后的实时健康数据，并在前端界面展示。
-```
+```bash
 //index.vue
 <template>
     <view class="container">
@@ -233,7 +233,7 @@ hjnb1314@hjnb1314-virtual-machine:/usr/local/bin$ ./ngrok http 3000
 
 ### ② 数据处理
 从华为云平台获取数据，进行数据清洗、格式转换等处理，再返回给前端。同时，接收ESP8266上传的数据，并存储至华为云平台，实现数据的双向流通。
-```
+```bash
 //app.js
 const WebSocket = require('ws');
 const express = require('express');
@@ -299,7 +299,7 @@ server.listen(port, () => {
 ## （3）ESP8266程序
 ### ① 数据采集
 编写代码，通过相应的库函数实现对MAX30102和DHT11传感器的数据读取，确保数据的准确性和实时
-```
+```bash
 //4.0，test.ino
 
 #include <Wire.h>
