@@ -6,16 +6,85 @@
 <meta property="og:image" content="https://hjnb1314.github.io/img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png">
 <meta property="article:author" content="HJ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hjnb1314.github.io/img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://hjnb1314.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://hjnb1314.github.io/img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://hjnb1314.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  localSearch: undefined,
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
     success: 'Copy Successful',
-    error: 'Copy Error',
+    error: 'Copy Failed',
     noSupport: 'Browser Not Supported'
   },
   relativeDate: {
@@ -31,14 +100,14 @@
     month: 'months ago'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: {"chs_to_cht":"You have switched to Traditional Chinese","cht_to_chs":"You have switched to Simplified Chinese","day_to_night":"You have switched to Dark Mode","night_to_day":"You have switched to Light Mode","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
   infinitegrid: {
     js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
     buttonText: 'Load More'
   },
   isPhotoFigcaption: false,
-  islazyload: true,
+  islazyloadPlugin: true,
   isAnchor: false,
   percent: {
     toc: true,
@@ -47,226 +116,37 @@
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'Hj\'s blog',
-  isPost: false,
-  isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-07-10 09:18:23'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://jsd.012700.xyz/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Hj's blog"><span class="site-name">Hj's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hj's blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="/2025499554@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2048/" title="2048">2048</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E6%B8%B8%E6%88%8F/">小游戏</a></span></div><div class="content">操作方式：使用键盘的上、下、左、右键来控制方块的移动：
-
-W键：向上移动方块
-S键：向下移动方块
-A键：向左移动方块
-D键：向右移动方块
-
-游戏规则：
-游戏开始时，屏幕上会出现两个数字方块（2或4）。
-使用键盘上、下、左、右键移动所有方块，所有的方块会同时移动，并在每次移动时生成一个新的数字方块。
-当两个相同数字的方块碰撞在一起时，它们会合并成一个数字方块，数字值为它们的和。
-每次移动，如果有方块合并，则得分增加。
-游戏结束条件：
-没有可以移动的空格，并且没有可以合并的相邻方块时，游戏结束。
-达到2048的方块时，游戏胜利。
-
-
-
-
-
-    
-    
-
-
-    2048 Game
-    
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 480px;
-            position: relative;
-   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言学习笔记">C语言学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">一、C语言基础C语言一经出现就以其功能丰富、表达能力强、灵活方便、应用面广等特点迅速在全世界普及和推广。C语言不但执行效率高而且可移植性好，可以用来开发应用软件、驱动、操作系统等。C语言也是其它众多高级语言的鼻祖语言，所以说学习C语言是进入编程世界的必修课。
-1、程序：Hello World.
-运行结果如下：
-
-注：在最新的C标准中，main函数前的类型为int而不是void
-2、C语言的具体结构简单来说，一个C程序就是由若干头文件和函数组成。
-
-#include &lt;stdio.h&gt; 就是一条预处理命令，它的作用是通知C语言编译系统在对C程序进行正式编译之前需做一些预处理工作。
-函数就是实现代码逻辑的一个小的单元。
-3、必不可少之主函数一个C程序有且只有一个主函数，即main函数。
-
-C程序就是执行主函数里的代码，也可以说这个主函数就是C语言中的唯一入口。而main前面的int就是主函数的类型。printf()是格式输出函数，这里就记住它的功能就是在屏幕上输出指定的信息。return是函数的返回值，根据函数类型的不同，返回的值也是不同的。\n是转义字符中的换行符。(注意：C ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Markdown学习笔记">Markdown学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">1.Markdown语法自带格式1.1 代码块
-示例源码
-
-1234567891011# VSCode终端hexo clean; hexo shexo clean; hexo g; hexo dgit add .; git commit -m &quot;npm publish&quot;; npm version patch; git push# Cmder终端hexo clean &amp;&amp; hexo shexo clean &amp;&amp; hexo g &amp;&amp; hexo dgit add . &amp;&amp; git commit -m &quot;npm publish&quot; &amp;&amp; npm version patchgit push
-
-
-
-1.2 多级标题
-示例源码
-
-123456# H1## H2### H3#### H4##### H5###### H6
-
-
-
-1.3 文字样式
-示例源码
-
-123456789101112131415&lt;u&gt;下划线演示&lt;/u&gt;文字**加粗**演示文字*斜体*演示文本 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="PWM学习笔记">PWM学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">深入理解PWM（脉宽调制）1. 什么是PWM？PWM，即脉宽调制（Pulse Width Modulation），是一种电子技术，通过调节电信号的高电平持续时间和低电平持续时间来控制输出信号的强度或表现形式。它是一种周期性的波形，周期内包含了高电平和低电平两种状态。
-2. PWM的重要参数是什么？在PWM中，有两个非常重要的参数：
-
-周期（T）：表示PWM波形一个完整周期所持续的时间长度。
-占空比（Duty Cycle）：指高电平在一个周期内所占的比例，通常用百分比表示。
-
-3. PWM的应用场景有哪些？PWM技术被广泛应用于各种领域，包括：
-
-通信领域的脉宽调制技术。
-LED照明领域中，可以通过PWM波形来调节LED灯的亮度，实现调光效果。
-控制蜂鸣器、电机等设备，控制其工作状态和频率。
-
-4. PWM波形是如何产生的？4.1 基本原理PWM波形的生成基于定时器和GPIO引脚。通过配置定时器产生高低电平信号，并通过GPIO引脚输出，从而形成PWM波形。
-4.2 早期实现方式在早期的简单单片机中，由于没有专用的PWM定时器，需要手动结合GPIO和定时器模块来生成PWM波形。
-4.3 现 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/ubantu20%E7%94%A8ngrok%E9%83%A8%E7%BD%B2node%E7%BD%91%E9%A1%B5/" title="ubantu20通过ngrok部署node网页">ubantu20通过ngrok部署node网页</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web学习笔记</a></span></div><div class="content">具体可参考本人github（test）仓库
-使用 ngrok 部署 Node.js 应用的完整流程1. 环境准备1.1 安装 Node.js 和 npm确保你的系统上安装了 Node.js 和 npm。如果没有安装，可以通过以下命令安装：
-12sudo apt updatesudo apt install nodejs npm
-
-1.2 安装 MySQL确保安装了 MySQL 数据库服务器：
-12sudo apt updatesudo apt install mysql-server
-
-2. 配置 MySQL2.1 登录 MySQL使用 root 用户登录 MySQL：
-1sudo mysql -u root
-
-2.2 设置 root 用户密码和权限在 MySQL 控制台中，设置 root 用户密码和权限：
-12ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;你的密码&#x27;;FLUSH PRIVILEGES;
-
-2.3 创建数据库和表在 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%8E%E4%B8%AD%E6%96%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="定时器与中断学习笔记">定时器与中断学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">一、认知单片机中的“中断”（1）中断的基本概念在计算机执行程序的过程中，当出现某种情况时，由服务对象向CPU发出请求当前程序中断的信号，要求CPU暂时停止当前程序的执行，而转去执行相应的处理程序，待处理程序执行完毕后，再返回继续执行原来被中断的程序，这样的过程称为中断过程。引起中断的原因或触发中断请求的来源称为中断源。为实现中断而设置的各种硬件和软件称为中断系统。
-（2）采用中断技术的优点
-实行分时操作，提高了CPU的利用率。当服务对象向CPU发出中断请求时，才使CPU转向为该对象服务，否则不影响CPU的正常工作。这样，利用中断可以使CPU同时为多个对象服务，从而大大提高了整个单片机系统的工作效率。
-
-实现实时处理，及时处理实时信息。在工业现场控制中，常常要求单片机系统对信号进行实时处理。利用中断技术，各服务对象可以根据需要随时向CPU发出中断请求，CPU及时检测并处理各对象的控制要求，已实现实时控制。
-
-对难以预料的情况或故障进行及时处理。在单片机系统工作过程中，有时会出现一些难以预料的情况或故障，如电源掉电、运算溢出、传输错误等，此时可以利用中断进行相应的处理而不必停机。
-
-
-（3 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/%E5%BA%8F%E7%AB%A0/" title="My Blog">My Blog</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">记录学习点滴</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%B8%8E%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA/" title="推挽输出与开漏输出">推挽输出与开漏输出</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-10T09:17:37.376Z" title="Updated 2024-07-10 09:17:37">2024-07-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">推挽输出与开漏输出推挽输出（Push-Pull Output）推挽输出是一种常见的数字电路输出配置，通常用于驱动负载，如LED、电机等。在推挽输出中，使用了两个互补的晶体管，一个用于提供高电平输出，另一个用于提供低电平输出。这两个晶体管可以同时工作，使输出可以提供较高的驱动能力和速度。
-特点：
-高驱动能力： 由于使用了两个互补的晶体管，推挽输出可以提供较高的电流输出能力，适用于驱动较大负载。
-快速切换速度： 两个晶体管可以快速切换，因此推挽输出可以实现高速的电平变化，适用于需要快速响应的应用场景。
-适用范围广： 由于其性能稳定且输出能力较强，推挽输出被广泛应用于各种数字电路中。
-
-适用场景：
-驱动电机： 推挽输出可以提供足够的电流驱动电机，适用于各种类型的电机驱动。
-LED控制： 推挽输出可以提供足够的电流和快速的切换速度，适用于LED灯带、显示屏等LED控制场景。
-
-开漏输出（Open-Drain Output）开漏输出是另一种常见的数字电路输出配置，也常用于驱动负载。在开漏输出中，晶体管只提供了一个方向的电流流动路径，当输出为低电平时，晶体管导通，输出接地；当输出为高电平时，晶体管 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">HJ</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="/2025499554@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">不积跬步无以至千里，不积小流何以成江海</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2048/" title="2048">2048</a><time datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言学习笔记">C语言学习笔记</a><time datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Markdown学习笔记">Markdown学习笔记</a><time datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="PWM学习笔记">PWM学习笔记</a><time datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ubantu20%E7%94%A8ngrok%E9%83%A8%E7%BD%B2node%E7%BD%91%E9%A1%B5/" title="ubantu20通过ngrok部署node网页">ubantu20通过ngrok部署node网页</a><time datetime="2024-07-10T09:17:37.376Z" title="Created 2024-07-10 09:17:37">2024-07-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://jsd.012700.xyz/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://jsd.012700.xyz/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hj's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Hj's blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="/2025499554@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%8E%E4%B8%AD%E6%96%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="定时器与中断学习笔记">定时器与中断学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.632Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.632Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/%E5%BA%8F%E7%AB%A0/" title="My Blog">My Blog</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.632Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.632Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">记录学习点滴</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%B8%8E%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA/" title="推挽输出与开漏输出">推挽输出与开漏输出</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.632Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.632Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">推挽输出与开漏输出推挽输出（Push-Pull Output）推挽输出是一种常见的数字电路输出配置，通常用于驱动负载，如LED、电机等。在推挽输出中，使用了两个互补的晶体管，一个用于提供高电平输出，另一个用于提供低电平输出。这两个晶体管可以同时工作，使输出可以提供较高的驱动能力和速度。 特点： 高驱动能力： 由于使用了两个互补的晶体管，推挽输出可以提供较高的电流输出能力，适用于驱动较大负载。 快速切换速度： 两个晶体管可以快速切换，因此推挽输出可以实现高速的电平变化，适用于需要快速响应的应用场景。 适用范围广： 由于其性能稳定且输出能力较强，推挽输出被广泛应用于各种数字电路中。  适用场景： 驱动电机： 推挽输出可以提供足够的电流驱动电机，适用于各种类型的电机驱动。 LED控制： 推挽输出可以提供足够的电流和快速的切换速度，适用于LED灯带、显示屏等LED控制场景。  开漏输出（Open-Drain...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2048/" title="2048">2048</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.631Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E6%B8%B8%E6%88%8F/">小游戏</a></span></div><div class="content">操作方式：使用键盘的上、下、左、右键来控制方块的移动：  W键：向上移动方块 S键：向下移动方块 A键：向左移动方块 D键：向右移动方块  游戏规则： 游戏开始时，屏幕上会出现两个数字方块（2或4）。 使用键盘上、下、左、右键移动所有方块，所有的方块会同时移动，并在每次移动时生成一个新的数字方块。 当两个相同数字的方块碰撞在一起时，它们会合并成一个数字方块，数字值为它们的和。 每次移动，如果有方块合并，则得分增加。 游戏结束条件： 没有可以移动的空格，并且没有可以合并的相邻方块时，游戏结束。 达到2048的方块时，游戏胜利。                      2048 Game              body {             font-family: Arial, sans-serif;             margin: 0;             padding: 0;         }          .container {             width: 480px;             position:...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言学习笔记">C语言学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.631Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">一、C语言基础C语言一经出现就以其功能丰富、表达能力强、灵活方便、应用面广等特点迅速在全世界普及和推广。C语言不但执行效率高而且可移植性好，可以用来开发应用软件、驱动、操作系统等。C语言也是其它众多高级语言的鼻祖语言，所以说学习C语言是进入编程世界的必修课。 1、程序：Hello World. 运行结果如下：  注：在最新的C标准中，main函数前的类型为int而不是void 2、C语言的具体结构简单来说，一个C程序就是由若干头文件和函数组成。  #include &lt;stdio.h&gt;...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/Esp8266_healthy/" title="基于ESP8266将健康数据上传华为云平台进行实时监控">基于ESP8266将健康数据上传华为云平台进行实时监控</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.631Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">一、基于ESP8266的健康数据上传项目（1）项目目标与背景本项目旨在搭建一个实时健康数据监测系统，通过传感器采集数据，利用ESP8266主控板传输数据至华为云平台，并开发前端界面实现数据可视化。随着人们对健康管理的重视，此类实时、便捷的健康监测系统需求日益增长。 （2）项目整体架构项目由硬件采集端、数据传输链路、后端服务和前端展示四部分构成。硬件采集端负责收集数据，数据传输链路依托ESP8266的Wi-Fi功能，后端服务采用nodejs搭建，前端使用uniapp开发。 二、硬件搭建（1）ESP8266主控板① 选型原因ESP8266以其低成本、低功耗及强大的网络功能，成为本项目主控板的理想选择。它能够轻松实现数据的处理与网络传输，满足项目需求。 ② 连接与配置通过USB转TTL模块连接电脑，用于程序烧录与调试。在开发环境中，需配置好对应的端口和通信参数。 （2）MAX30102传感器① 功能作用MAX30102用于精确采集心率和血氧饱和度数据，为健康监测提供关键指标。 ②...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/Markdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Markdown学习笔记">Markdown学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.631Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">1.Markdown语法自带格式1.1 代码块 示例源码  1234567891011# VSCode终端hexo clean; hexo shexo clean; hexo g; hexo dgit add .; git commit -m &quot;npm publish&quot;; npm version patch; git push# Cmder终端hexo clean &amp;&amp; hexo shexo clean &amp;&amp; hexo g &amp;&amp; hexo dgit add . &amp;&amp; git commit -m &quot;npm publish&quot; &amp;&amp; npm version patchgit push    1.2 多级标题 示例源码  123456# H1## H2### H3#### H4##### H5###### H6    1.3...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/PWM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="PWM学习笔记">PWM学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.631Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">嵌入式学习笔记</a></span></div><div class="content">深入理解PWM（脉宽调制）1. 什么是PWM？PWM，即脉宽调制（Pulse Width Modulation），是一种电子技术，通过调节电信号的高电平持续时间和低电平持续时间来控制输出信号的强度或表现形式。它是一种周期性的波形，周期内包含了高电平和低电平两种状态。 2. PWM的重要参数是什么？在PWM中，有两个非常重要的参数：  周期（T）：表示PWM波形一个完整周期所持续的时间长度。 占空比（Duty Cycle）：指高电平在一个周期内所占的比例，通常用百分比表示。  3. PWM的应用场景有哪些？PWM技术被广泛应用于各种领域，包括：  通信领域的脉宽调制技术。 LED照明领域中，可以通过PWM波形来调节LED灯的亮度，实现调光效果。 控制蜂鸣器、电机等设备，控制其工作状态和频率。  4. PWM波形是如何产生的？4.1 基本原理PWM波形的生成基于定时器和GPIO引脚。通过配置定时器产生高低电平信号，并通过GPIO引脚输出，从而形成PWM波形。 4.2...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/ubantu20%E7%94%A8ngrok%E9%83%A8%E7%BD%B2node%E7%BD%91%E9%A1%B5/" title="ubantu20通过ngrok部署node网页">ubantu20通过ngrok部署node网页</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-25T02:33:10.632Z" title="Updated 2025-03-25 02:33:10">2025-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">web学习笔记</a></span></div><div class="content">具体可参考本人github（test）仓库 使用 ngrok 部署 Node.js 应用的完整流程1. 环境准备1.1 安装 Node.js 和 npm确保你的系统上安装了 Node.js 和 npm。如果没有安装，可以通过以下命令安装： 12sudo apt updatesudo apt install nodejs npm  1.2 安装 MySQL确保安装了 MySQL 数据库服务器： 12sudo apt updatesudo apt install mysql-server  2. 配置 MySQL2.1 登录 MySQL使用 root 用户登录 MySQL： 1sudo mysql -u root  2.2 设置 root 用户密码和权限在 MySQL 控制台中，设置 root 用户密码和权限： 12ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;你的密码&#x27;;FLUSH PRIVILEGES;  2.3...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/./img/nmercer_A_charming_and_elegant_Chinese_girl_adorned_in_traditio_0e7b3a84-cdcb-45cd-9899-0cf4a4602797.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">HJ</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="/2025499554@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">不积跬步无以至千里，不积小流何以成江海</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%8E%E4%B8%AD%E6%96%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="定时器与中断学习笔记">定时器与中断学习笔记</a><time datetime="2025-03-25T02:33:10.632Z" title="Created 2025-03-25 02:33:10">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BA%8F%E7%AB%A0/" title="My Blog">My Blog</a><time datetime="2025-03-25T02:33:10.632Z" title="Created 2025-03-25 02:33:10">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA%E4%B8%8E%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA/" title="推挽输出与开漏输出">推挽输出与开漏输出</a><time datetime="2025-03-25T02:33:10.632Z" title="Created 2025-03-25 02:33:10">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2048/" title="2048">2048</a><time datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言学习笔记">C语言学习笔记</a><time datetime="2025-03-25T02:33:10.631Z" title="Created 2025-03-25 02:33:10">2025-03-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>Categories</span>
             
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">web学习笔记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%B6%E4%BB%96/"><span class="card-category-list-name">其他</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E6%B8%B8%E6%88%8F/"><span class="card-category-list-name">小游戏</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">嵌入式学习笔记</span><span class="card-category-list-count">4</span></a></li>
-            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">July 2024</span><span class="card-archive-list-count">8</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">8</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-10T09:18:23.278Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By HJ</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="Toggle Between Traditional Chinese And Simplified Chinese">繁</button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
-
-function panguInit () {
-  if (false){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">web学习笔记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%B6%E4%BB%96/"><span class="card-category-list-name">其他</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B0%8F%E6%B8%B8%E6%88%8F/"><span class="card-category-list-name">小游戏</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">嵌入式学习笔记</span><span class="card-category-list-count">5</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              March 2025
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">9</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-25T02:33:33.639Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By HJ</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
       startDelay: 300,
@@ -275,37 +155,56 @@ document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-
       backSpeed: 50,
     }, null))
   },
-  run: (subtitleType) => {
+  run: subtitleType => {
     if (true) {
       if (typeof Typed === 'function') {
         subtitleType()
       } else {
-        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
       }
     } else {
       subtitleType()
     }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
   }
 }
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
 </script><script>function subtitleType () {
   fetch('https://v1.hitokoto.cn')
     .then(response => response.json())
     .then(data => {
-      if (true) {
-        const from = '出自 ' + data.from
-        const sub = []
-        sub.unshift(data.hitokoto, from)
-        typedJSFn.init(sub)
-      } else {
-        document.getElementById('subtitle').textContent = data.hitokoto
-      }
+      const from = '出自 ' + data.from
+      typedJSFn.processSubtitle(data.hitokoto, [from])
+    })
+    .catch(err => {
+      console.error('Failed to get the Hitokoto API:', err)
+      typedJSFn.processSubtitle([])
     })
 }
 typedJSFn.run(subtitleType)
-</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="80" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="80" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
     function butterfly_categories_card_injector_config(){
       var parent_div_git = document.getElementById('recent-posts');
-      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage109.360doc.com%2FDownloadImg%2F2021%2F09%2F2501%2F231033624_1_20210925010834976&amp;refer=http%3A%2F%2Fimage109.360doc.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1712567733&amp;t=51bf0545bc9bb72f6fc0c354fec00fc7);"> <a class="categoryBar-list-link" href="categories/小游戏/">小游戏</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">嵌入式学习笔记</span></li><li class="categoryBar-list-item" style="background:url(https://img1.baidu.com/it/u=1750617134,4086967370&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=750&amp;h=500);"> <a class="categoryBar-list-link" href="categories/嵌入式学习笔记/">嵌入式学习笔记</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">其他</span></li><li class="categoryBar-list-item" style="background:url(https://th.bing.com/th/id/OIP.2pJxnriPyF0fo869BBPruwHaEK?rs=1&amp;pid=ImgDetMain);"> <a class="categoryBar-list-link" href="categories/其他/">其他</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">web学习笔记</span></li><li class="categoryBar-list-item" style="background:url(https://th.bing.com/th/id/OIP.11v7ebsRJp7btoF86bTD2QHaEo?rs=1&amp;pid=ImgDetMain);"> <a class="categoryBar-list-link" href="categories/web学习笔记/">web学习笔记</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">小游戏</span></li></ul></div></div>';
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage109.360doc.com%2FDownloadImg%2F2021%2F09%2F2501%2F231033624_1_20210925010834976&amp;refer=http%3A%2F%2Fimage109.360doc.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1712567733&amp;t=51bf0545bc9bb72f6fc0c354fec00fc7);"> <a class="categoryBar-list-link" href="categories/小游戏/">小游戏</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">嵌入式学习笔记</span></li><li class="categoryBar-list-item" style="background:url(https://img1.baidu.com/it/u=1750617134,4086967370&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=750&amp;h=500);"> <a class="categoryBar-list-link" href="categories/嵌入式学习笔记/">嵌入式学习笔记</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">其他</span></li><li class="categoryBar-list-item" style="background:url(https://th.bing.com/th/id/OIP.2pJxnriPyF0fo869BBPruwHaEK?rs=1&amp;pid=ImgDetMain);"> <a class="categoryBar-list-link" href="categories/其他/">其他</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">web学习笔记</span></li><li class="categoryBar-list-item" style="background:url(https://th.bing.com/th/id/OIP.11v7ebsRJp7btoF86bTD2QHaEo?rs=1&amp;pid=ImgDetMain);"> <a class="categoryBar-list-link" href="categories/web学习笔记/">web学习笔记</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">小游戏</span></li></ul></div></div>';
       console.log('已挂载butterfly_categories_card')
       parent_div_git.insertAdjacentHTML("afterbegin",item_html)
       }
