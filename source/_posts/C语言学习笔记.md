@@ -1,7 +1,7 @@
 ---
 title: C语言学习笔记
 categories:
-  - 项目合集
+  - 嵌入式学习笔记
 top_img: ../img/index.jpg
 ---
 
