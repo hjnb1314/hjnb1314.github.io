@@ -42,6 +42,25 @@
     
     
     <entry>
+      <title>基于ESP32移动环境与位置云端记录仪</title>
+      <link href="/ESP32%E7%A7%BB%E5%8A%A8%E7%8E%AF%E5%A2%83%E4%B8%8E%E4%BD%8D%E7%BD%AE%E4%BA%91%E7%AB%AF%E8%AE%B0%E5%BD%95%E4%BB%AA/"/>
+      <url>/ESP32%E7%A7%BB%E5%8A%A8%E7%8E%AF%E5%A2%83%E4%B8%8E%E4%BD%8D%E7%BD%AE%E4%BA%91%E7%AB%AF%E8%AE%B0%E5%BD%95%E4%BB%AA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="移动环境与位置云端记录仪-项目笔记"><a href="#移动环境与位置云端记录仪-项目笔记" class="headerlink" title="移动环境与位置云端记录仪 项目笔记"></a>移动环境与位置云端记录仪 项目笔记</h1><h2 id="一、项目简介"><a href="#一、项目简介" class="headerlink" title="一、项目简介"></a>一、项目简介</h2><p>本项目基于 ESP32 微控制器，整合温湿度、光照、GPS定位等多种传感器，实现本地环境与位置信息的采集，并通过 MQTT 协议定时上传至华为云 IoTDA 平台。后端服务器可通过华为云北向API定时拉取设备属性数据，并通过 WebSocket 推送给网页前端，最终实现实时可视化展示。适合环境监测、物联网课程实践、小型物联云端数据展示等应用场景。</p><hr><h2 id="二、主要软硬件组件"><a href="#二、主要软硬件组件" class="headerlink" title="二、主要软硬件组件"></a>二、主要软硬件组件</h2><ul><li><strong>主控板</strong>：ESP32开发板</li><li><strong>温湿度传感器</strong>：DHT11（或DS18B20温度模块）</li><li><strong>光敏电阻传感器</strong>：模拟光照传感器，AO口接ESP32 ADC引脚</li><li><strong>GPS模块</strong>：NEO-6M，串口TTL通讯</li><li><strong>云平台</strong>：华为云IoTDA，支持MQTT直连、属性上报、设备影子</li><li><strong>Web服务器&#x2F;前端</strong>：uni-app H5网页（或Android、微信小程序）</li><li><strong>后端</strong>：Node.js (Express + WebSocket)，定时通过北向API拉取设备属性并推送</li></ul><hr><h2 id="三、硬件连接说明"><a href="#三、硬件连接说明" class="headerlink" title="三、硬件连接说明"></a>三、硬件连接说明</h2><ul><li><strong>DHT11数据引脚</strong> → ESP32 GPIO4  </li><li><strong>光敏AO引脚</strong> → ESP32 GPIO34 (或2&#x2F;4&#x2F;5&#x2F;18&#x2F;19&#x2F;15等ADC口)</li><li><strong>GPS模块TX</strong> → ESP32 GPIO17（作为RX2接收，波特率38400）</li><li><strong>GPS模块RX</strong> 可不接（或接ESP32 TX2: GPIO16）</li><li>所有传感器共地</li></ul><hr><h2 id="四、ESP32主控代码简要逻辑"><a href="#四、ESP32主控代码简要逻辑" class="headerlink" title="四、ESP32主控代码简要逻辑"></a>四、ESP32主控代码简要逻辑</h2><ol><li>定时读取DHT11温湿度、光敏电阻ADC值、GPS数据</li><li>解析NMEA协议，提取经纬度、卫星数等信息</li><li>拼接JSON属性包，MQTT publish到华为云 IoTDA 设备属性上报Topic<br>Topic格式：<code>$oc/devices/&#123;device_id&#125;/sys/properties/report</code></li><li>支持掉线重连与异常处理</li></ol><hr><h2 id="五、华为云IoTDA平台配置"><a href="#五、华为云IoTDA平台配置" class="headerlink" title="五、华为云IoTDA平台配置"></a>五、华为云IoTDA平台配置</h2><ol><li>创建产品，定义服务与属性（如temperature, humidity, light, longitude, latitude, satellites）</li><li>创建设备，获取<code>device_id</code>，开通MQTT直连</li><li>记录实例API调用地址、项目ID（projectId）、服务ID（serviceId）</li></ol><hr><h2 id="六、Node-js后端（北向API-WebSocket）"><a href="#六、Node-js后端（北向API-WebSocket）" class="headerlink" title="六、Node.js后端（北向API+WebSocket）"></a>六、Node.js后端（北向API+WebSocket）</h2><ol><li><p>定时用API获取token，拉取设备影子属性<br>API路径:GET </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://&#123;iotda实例域名&#125;/v5/iot/&#123;project_id&#125;/devices/&#123;device_id&#125;/shadow</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>解析<code>reported.properties</code>，存为<code>latestData</code></p></li><li><p>WebSocket推送：有前端连接后，每次属性更新即主动推送</p></li><li><p>供H5前端用WebSocket方式实时订阅</p></li></ol><hr><h2 id="七、前端网页H5"><a href="#七、前端网页H5" class="headerlink" title="七、前端网页H5"></a>七、前端网页H5</h2><ol><li>WebSocket连接（如 <code>wss://xxx.ngrok-free.app</code> 或服务器公网地址）</li><li>收到属性JSON后自动展示到页面</li><li>支持手动切换WebSocket域名、断开与重连</li><li>展示数据项：温度、湿度、光照、经纬度、卫星数</li></ol><hr><h2 id="八、虚拟机-服务器部署简要流程"><a href="#八、虚拟机-服务器部署简要流程" class="headerlink" title="八、虚拟机&#x2F;服务器部署简要流程"></a>八、虚拟机&#x2F;服务器部署简要流程</h2><ol><li><strong>网页前端</strong>：uni-app打包为H5，<code>python3 -m http.server 8080</code> 或 <code>nginx</code> 运行</li><li><strong>Node.js后端</strong>：用<code>express</code>+<code>ws</code>监听WebSocket端口并跑北向API拉数据</li><li><strong>公网暴露</strong>：可用ngrok映射http&#x2F;ws端口（注意ngrok免费版仅单端口），或直接云服务器公网访问</li><li><strong>本地&#x2F;虚拟机调试</strong>：防火墙开放端口，ngrok&#x2F;服务器保证外部可访问</li></ol><hr><h2 id="九、常见问题与注意事项"><a href="#九、常见问题与注意事项" class="headerlink" title="九、常见问题与注意事项"></a>九、常见问题与注意事项</h2><ul><li>ngrok免费版<strong>只支持单端口</strong>，如需同时公网暴露前后端，推荐合并端口或用云服务器</li><li>WebSocket与HTTP协议&#x2F;端口要完全对应，H5网页端用<code>wss://</code>，本地开发可用<code>ws://</code></li><li>华为云北向API必须用有效token、正确的projectId、deviceId、实例API域名，否则会404或401</li><li>手机APP端WebSocket受证书影响可能不能用ngrok（H5网页推荐，无证书警告）</li><li>设备端属性要及时上报，云端设备影子要能实时刷新</li><li>若前端收不到数据，优先排查后端WebSocket推送与前端WebSocket地址是否一致</li></ul><hr><h2 id="十、典型代码片段参考"><a href="#十、典型代码片段参考" class="headerlink" title="十、典型代码片段参考"></a>十、典型代码片段参考</h2><h3 id="Node-js静态文件-WebSocket合并服务"><a href="#Node-js静态文件-WebSocket合并服务" class="headerlink" title="Node.js静态文件+WebSocket合并服务"></a>Node.js静态文件+WebSocket合并服务</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">WebSocket</span> = <span class="built_in">require</span>(<span class="string">&#x27;ws&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(app);</span><br><span class="line"><span class="keyword">const</span> wss = <span class="keyword">new</span> <span class="title class_">WebSocket</span>.<span class="title class_">Server</span>(&#123; server &#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;h5&#x27;</span>)));</span><br><span class="line"></span><br><span class="line">wss.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="function"><span class="params">ws</span> =&gt;</span> &#123;</span><br><span class="line">ws.<span class="title function_">send</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="attr">msg</span>: <span class="string">&quot;hello&quot;</span> &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;服务已启动: http://localhost:3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//前端H5 WebSocket监听</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ws = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(<span class="string">&#x27;wss://xxxx.ngrok-free.app&#x27;</span>);</span><br><span class="line">ws.<span class="property">onopen</span> = <span class="function">() =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;连接成功&#x27;</span>); &#125;;</span><br><span class="line">ws.<span class="property">onmessage</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;收到&#x27;</span>, e.<span class="property">data</span>); &#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目合集 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于ESP8266将健康数据上传华为云平台进行实时监控</title>
       <link href="/Esp8266_healthy/"/>
       <url>/Esp8266_healthy/</url>
@@ -287,28 +306,6 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
@@ -320,9 +317,31 @@
     
     
     <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电影</title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
