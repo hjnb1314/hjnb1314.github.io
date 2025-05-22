@@ -133,7 +133,7 @@ ws.onmessage = e => { console.log('收到', e.data); };
 
 ```
 //具体项目文件可访问本人github仓库
-https://github.com/hjnb1314/Esp8266_healthy_HuaweiCloud.git
+https://github.com/hjnb1314/ESP32-GDG.git
 ```
 
 
